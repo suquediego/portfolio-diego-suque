@@ -13,6 +13,9 @@ import { SafeImage } from "@/components/safe-image";
 const CODER_HERO_IMAGE = "/images/dev-hero-3.png";
 const DESIGNER_HERO_IMAGE = "/images/suque-hero.png";
 
+const heroButtonClass =
+  "inline-flex h-[50px] w-[150px] items-center justify-center rounded-[30px] border border-[#8F9092] bg-[linear-gradient(to_top,#D8D9DB_0%,#fff_80%,#FDFDFD_100%)] text-[14px] font-semibold text-[#606060] shadow-none outline-none transition-all duration-200 [text-shadow:0_1px_#fff] hover:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_3px_3px_#CECFD1] active:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_5px_3px_#999,inset_0_0_30px_#aaa] focus:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_5px_3px_#999,inset_0_0_30px_#aaa]";
+
 export function Hero() {
   const mouse = useMotionValue(50);
 
@@ -28,8 +31,8 @@ export function Hero() {
    * 100 = coder completo
    *
    * Importante:
-   * A camada designer agora aparece pela DIREITA,
-   * então no 50/50:
+   * A camada designer aparece pela DIREITA.
+   * Então no 50/50:
    * - esquerda = coder/P&B
    * - direita = designer/colorida
    */
@@ -43,11 +46,24 @@ export function Hero() {
    */
   const heroImageX = useTransform(smoothMouse, [0, 50, 100], [-145, 0, 145]);
 
-  const coderOpacity = useTransform(smoothMouse, [0, 42, 50, 58, 100], [0, 0, 1, 1, 1]);
-  const designerOpacity = useTransform(smoothMouse, [0, 42, 50, 58, 100], [1, 1, 1, 0, 0]);
+  const coderOpacity = useTransform(
+    smoothMouse,
+    [0, 42, 50, 58, 100],
+    [0, 0, 1, 1, 1],
+  );
+
+  const designerOpacity = useTransform(
+    smoothMouse,
+    [0, 42, 50, 58, 100],
+    [1, 1, 1, 0, 0],
+  );
 
   const coderScale = useTransform(smoothMouse, [0, 50, 100], [0.96, 1, 1.14]);
-  const designerScale = useTransform(smoothMouse, [0, 50, 100], [1.14, 1, 0.96]);
+  const designerScale = useTransform(
+    smoothMouse,
+    [0, 50, 100],
+    [1.14, 1, 0.96],
+  );
 
   const coderTextX = useTransform(smoothMouse, [0, 50, 100], [-20, 0, 0]);
   const designerTextX = useTransform(smoothMouse, [0, 50, 100], [0, 0, 20]);
@@ -55,7 +71,11 @@ export function Hero() {
   const coderCtaOpacity = useTransform(smoothMouse, [50, 70, 100], [0, 0.3, 1]);
   const coderCtaY = useTransform(smoothMouse, [50, 100], [12, 0]);
 
-  const designerCtaOpacity = useTransform(smoothMouse, [0, 30, 50], [1, 0.3, 0]);
+  const designerCtaOpacity = useTransform(
+    smoothMouse,
+    [0, 30, 50],
+    [1, 0.3, 0],
+  );
   const designerCtaY = useTransform(smoothMouse, [0, 50], [0, 12]);
 
   function handleMouseMove(event: React.MouseEvent<HTMLElement>) {
@@ -89,6 +109,7 @@ export function Hero() {
 
   return (
     <section
+      id="hero"
       className="relative isolate flex min-h-screen items-center overflow-hidden bg-background px-4 pt-20 md:px-8 md:pt-24"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -121,10 +142,7 @@ export function Hero() {
             className="mt-7"
             style={{ opacity: coderCtaOpacity, y: coderCtaY }}
           >
-            <Link
-              href="/front-end"
-              className="inline-flex h-11 items-center justify-center rounded-full border border-[#D7D7D7] bg-white px-5 text-sm font-semibold text-[#303030] shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition hover:border-[#BDBDBD] hover:bg-[#F7F7F7]"
-            >
+            <Link href="/front-end" className={heroButtonClass}>
               Ver front-end
             </Link>
           </motion.div>
@@ -198,19 +216,12 @@ export function Hero() {
             className="mt-7"
             style={{ opacity: designerCtaOpacity, y: designerCtaY }}
           >
-            <Link
-              href="/portfolio"
-              className="inline-flex h-11 items-center justify-center rounded-full border border-[#D7D7D7] bg-white px-5 text-sm font-semibold text-[#303030] shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition hover:border-[#BDBDBD] hover:bg-[#F7F7F7]"
-            >
+            <Link href="/portfolio" className={heroButtonClass}>
               Ver portfólio
             </Link>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Delimitação suave do final da hero */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-8 bg-gradient-to-b from-transparent via-black/[0.025] to-black/[0.045]" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-50 h-px bg-black/10 shadow-[0_10px_24px_rgba(0,0,0,0.14)]" />
     </section>
   );
 }

@@ -1,27 +1,34 @@
 export type Work = {
   title: string;
   category: string;
+  description: string;
   image: string;
   href: string;
 };
 
 export const works: Work[] = [
   {
-    title: "RivusPay",
-    category: "Product Design",
-    image: "/images/rivuspay-preview.png",
-    href: "/portfolio/rivuspay",
+    title: "Vanir",
+    category: "Gateway de pagamento",
+    description:
+      "Gateway de pagamento para operações PIX com foco em performance, estabilidade, monitoramento operacional e experiência para merchants.",
+    image: "/images/vanir-preview1.png",
+    href: "/portfolio/vanir",
   },
   {
-    title: "Jobs.bet",
-    category: "Front-end",
-    image: "/images/jobsbet-preview.png",
-    href: "/portfolio/jobsbet",
+    title: "Heimdall",
+    category: "KYC / Compliance",
+    description:
+      "Plataforma de KYC para análise de identidade, validação cadastral, compliance e tomada de decisão em ambientes financeiros.",
+    image: "/images/heimdall-preview1.png",
+    href: "/portfolio/heimdall",
   },
   {
-    title: "Whooks Docs",
-    category: "Developer Experience",
-    image: "/images/whooks-preview.png",
-    href: "/portfolio/whooks-docs",
+    title: "ParkingPix",
+    category: "PIX para estacionamento",
+    description:
+      "Solução de pagamento PIX para tickets de estacionamento, conectando jornada física e digital com validação rápida e redução de fricção.",
+    image: "/images/parkingpix-preview2.png",
+    href: "/portfolio/parkingpix",
   },
 ];

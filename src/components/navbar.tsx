@@ -21,7 +21,7 @@ function GitHubIcon({ className }: { className?: string }) {
   );
 }
 
-function InstagramIcon({ className }: { className?: string }) {
+function LinkedInIcon({ className }: { className?: string }) {
   return (
     <svg
       aria-hidden="true"
@@ -29,7 +29,7 @@ function InstagramIcon({ className }: { className?: string }) {
       className={className}
       fill="currentColor"
     >
-      <path d="M7.8 2h8.4A5.81 5.81 0 0 1 22 7.8v8.4a5.81 5.81 0 0 1-5.8 5.8H7.8A5.81 5.81 0 0 1 2 16.2V7.8A5.81 5.81 0 0 1 7.8 2Zm0 2.1a3.7 3.7 0 0 0-3.7 3.7v8.4a3.7 3.7 0 0 0 3.7 3.7h8.4a3.7 3.7 0 0 0 3.7-3.7V7.8a3.7 3.7 0 0 0-3.7-3.7H7.8Zm4.2 3.1a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 2.1a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4Zm5.05-2.48a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0Z" />
+      <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S.02 4.88.02 3.5 1.14 1 2.5 1s2.48 1.12 2.48 2.5ZM.42 8.02h4.16V23H.42V8.02ZM8.08 8.02h3.98v2.05h.06c.55-1.04 1.91-2.14 3.93-2.14 4.2 0 4.98 2.77 4.98 6.37V23h-4.16v-7.72c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.07V23H8.08V8.02Z" />
     </svg>
   );
 }
@@ -54,13 +54,13 @@ const socialLinks = [
     icon: GitHubIcon,
   },
   {
-    label: "Instagram",
-    href: "https://www.instagram.com/",
-    icon: InstagramIcon,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/diegosuque/",
+    icon: LinkedInIcon,
   },
   {
     label: "Behance",
-    href: "https://www.behance.net/",
+    href: "https://www.behance.net/diegocostasuu",
     icon: BehanceIcon,
   },
 ];
@@ -71,26 +71,27 @@ const navButtonClass =
 const iconButtonClass =
   "grid size-[46px] place-items-center rounded-[0.5em] border border-[#e8e8e8] bg-[#e8e8e8] text-[#090909] shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff] transition-all duration-300 hover:-translate-y-[1px] active:translate-y-0 active:text-[#666666] active:shadow-[inset_4px_4px_12px_#c5c5c5,inset_-4px_-4px_12px_#ffffff]";
 
+const logoButtonClass =
+  "relative grid h-[66px] w-[66px] shrink-0 place-items-center rounded-[0.8em] border border-[#e8e8e8] bg-[#e8e8e8] shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff] transition-all duration-300 hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:shadow-[inset_4px_4px_12px_#c5c5c5,inset_-4px_-4px_12px_#ffffff]";
+
 export function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-[#e8e8e8] shadow-[0_10px_28px_rgba(0,0,0,0.08)]">
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#e8e8e8]">
       <nav
         aria-label="Navegação principal"
         className="mx-auto flex h-[104px] max-w-[1320px] items-center justify-between px-6 md:px-10"
       >
-        <Link
-          href="/"
-          className="relative block h-[66px] w-[66px] shrink-0 transition duration-300 hover:scale-[1.03]"
-          aria-label="Diego Suque"
-        >
-          <SafeImage
-            src="/images/logo-suque.png"
-            alt="Logo Diego Suque"
-            fill
-            priority
-            sizes="66px"
-            className="object-contain"
-          />
+        <Link href="/#hero" className={logoButtonClass} aria-label="Diego Suque">
+          <span className="relative block h-[42px] w-[42px]">
+            <SafeImage
+              src="/images/logo-suque.png"
+              alt="Logo Diego Suque"
+              fill
+              priority
+              sizes="42px"
+              className="object-contain"
+            />
+          </span>
         </Link>
 
         <div className="hidden items-center gap-4 md:flex">

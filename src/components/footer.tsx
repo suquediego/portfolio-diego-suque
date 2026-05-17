@@ -8,17 +8,17 @@ const footerLinks = [
   { label: "Contato", href: "/contato" },
 ];
 
-const footerTextClass = "!text-[12px] !font-normal !leading-none !text-[#8A8A8A]";
+const footerTextClass =
+  "!text-[12px] !font-normal !leading-none !text-[#8A8A8A]";
+
+const backToTopButtonClass =
+  "absolute left-1/2 top-0 grid size-[74px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#E8E8E8] bg-[#E8E8E8] text-[#303030] shadow-[7px_7px_14px_#c9c9c9,-7px_-7px_14px_#ffffff] transition-all duration-300 hover:-translate-y-[calc(50%+2px)] hover:text-[#090909] hover:shadow-[9px_9px_18px_#c9c9c9,-9px_-9px_18px_#ffffff] active:shadow-[inset_5px_5px_10px_#c9c9c9,inset_-5px_-5px_10px_#ffffff]";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-[#DDDDDD] bg-[#F1F1F1] shadow-[0_-8px_28px_rgba(0,0,0,0.05)]">
-      <Link
-        href="#top"
-        aria-label="Voltar ao topo"
-        className="absolute left-1/2 top-0 grid size-[74px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#DDDDDD] bg-[#F7F7F7] text-[#D0D0D0] shadow-[0_-4px_18px_rgba(0,0,0,0.04)] transition hover:text-[#777777]"
-      >
-        <ChevronUp className="size-9 stroke-[1.4]" />
+    <footer className="relative border-t border-[#DDDDDD] bg-[#E8E8E8]">
+      <Link href="#hero" aria-label="Voltar ao topo" className={backToTopButtonClass}>
+        <ChevronUp className="size-8 stroke-[1.8]" />
       </Link>
 
       <div className="mx-auto flex min-h-[86px] max-w-[960px] flex-col items-center justify-between gap-5 px-4 py-8 text-center md:flex-row md:text-left">
