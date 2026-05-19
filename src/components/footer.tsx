@@ -12,12 +12,16 @@ const footerTextClass =
   "!text-[12px] !font-normal !leading-none !text-[#8A8A8A]";
 
 const backToTopButtonClass =
-  "absolute left-1/2 top-0 grid size-[74px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#E8E8E8] bg-[#E8E8E8] text-[#303030] shadow-[7px_7px_14px_#c9c9c9,-7px_-7px_14px_#ffffff] transition-all duration-300 hover:-translate-y-[calc(50%+2px)] hover:text-[#090909] hover:shadow-[9px_9px_18px_#c9c9c9,-9px_-9px_18px_#ffffff] active:shadow-[inset_5px_5px_10px_#c9c9c9,inset_-5px_-5px_10px_#ffffff]";
+  "absolute left-1/2 top-0 grid size-[74px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#8F9092] bg-[linear-gradient(to_top,#D8D9DB_0%,#fff_80%,#FDFDFD_100%)] text-[#606060] shadow-none outline-none transition-all duration-200 [text-shadow:0_1px_#fff] hover:-translate-y-[calc(50%+2px)] hover:text-[#303030] hover:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_3px_3px_#CECFD1] active:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_5px_3px_#999,inset_0_0_30px_#aaa] focus:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_5px_3px_#999,inset_0_0_30px_#aaa]";
 
 export function Footer() {
   return (
     <footer className="relative border-t border-[#DDDDDD] bg-[#E8E8E8]">
-      <Link href="#hero" aria-label="Voltar ao topo" className={backToTopButtonClass}>
+      <Link
+        href="#hero"
+        aria-label="Voltar ao topo"
+        className={backToTopButtonClass}
+      >
         <ChevronUp className="size-8 stroke-[1.8]" />
       </Link>
 

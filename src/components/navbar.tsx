@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SafeImage } from "@/components/safe-image";
 
 const navLinks = [
-  { label: "Portfólio", href: "/portfolio" },
+  { label: "Projetos", href: "/projetos" },
   { label: "Sobre", href: "/sobre" },
   { label: "Front-end", href: "/front-end" },
   { label: "Contato", href: "/contato" },
@@ -65,14 +65,13 @@ const socialLinks = [
   },
 ];
 
-const navButtonClass =
-  "inline-flex h-[46px] items-center justify-center rounded-[0.5em] border border-[#e8e8e8] bg-[#e8e8e8] px-[1.7em] py-[0.7em] text-[15px] font-semibold leading-none text-[#090909] shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff] transition-all duration-300 hover:-translate-y-[1px] active:translate-y-0 active:text-[#666666] active:shadow-[inset_4px_4px_12px_#c5c5c5,inset_-4px_-4px_12px_#ffffff]";
+const navButtonClass = "btn-soft-3d h-[46px] min-w-0 px-[26px]";
 
 const iconButtonClass =
-  "grid size-[46px] place-items-center rounded-[0.5em] border border-[#e8e8e8] bg-[#e8e8e8] text-[#090909] shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff] transition-all duration-300 hover:-translate-y-[1px] active:translate-y-0 active:text-[#666666] active:shadow-[inset_4px_4px_12px_#c5c5c5,inset_-4px_-4px_12px_#ffffff]";
+  "grid size-[46px] place-items-center rounded-full border border-[#8F9092] bg-[linear-gradient(to_top,#D8D9DB_0%,#fff_80%,#FDFDFD_100%)] text-[#606060] shadow-none outline-none transition-all duration-200 [text-shadow:0_1px_#fff] hover:text-[#303030] hover:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_3px_3px_#CECFD1] active:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_5px_3px_#999,inset_0_0_30px_#aaa] focus:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_5px_3px_#999,inset_0_0_30px_#aaa]";
 
 const logoButtonClass =
-  "relative grid h-[66px] w-[66px] shrink-0 place-items-center rounded-[0.8em] border border-[#e8e8e8] bg-[#e8e8e8] shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff] transition-all duration-300 hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:shadow-[inset_4px_4px_12px_#c5c5c5,inset_-4px_-4px_12px_#ffffff]";
+  "relative grid h-[66px] w-[66px] shrink-0 place-items-center overflow-hidden rounded-[22px] border border-[#1C1C1C] bg-[#080808] text-white shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff] outline-none transition-all duration-200 hover:scale-[1.02] hover:bg-[#111111] hover:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_3px_3px_rgba(255,255,255,0.08)] active:scale-100 active:shadow-[inset_4px_4px_10px_#000000,inset_-4px_-4px_10px_rgba(255,255,255,0.12)] focus:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_3px_3px_rgba(255,255,255,0.08)]";
 
 export function Navbar() {
   return (
@@ -82,13 +81,13 @@ export function Navbar() {
         className="mx-auto flex h-[104px] max-w-[1320px] items-center justify-between px-6 md:px-10"
       >
         <Link href="/#hero" className={logoButtonClass} aria-label="Diego Suque">
-          <span className="relative block h-[42px] w-[42px]">
+          <span className="relative block h-[58px] w-[58px]">
             <SafeImage
               src="/images/logo-suque.png"
               alt="Logo Diego Suque"
               fill
               priority
-              sizes="42px"
+              sizes="58px"
               className="object-contain"
             />
           </span>

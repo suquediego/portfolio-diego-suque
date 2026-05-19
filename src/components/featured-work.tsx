@@ -9,7 +9,7 @@ export function FeaturedWork() {
           <div className="h-px w-full max-w-[280px] bg-[#D0D0D0]" />
 
           <p className="shrink-0 text-center text-[11px] font-bold uppercase tracking-[0.32em] text-[#777777]">
-            Principais trabalhos
+            Projetos em destaque
           </p>
 
           <div className="h-px w-full max-w-[280px] bg-[#D0D0D0]" />

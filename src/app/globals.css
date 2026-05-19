@@ -70,3 +70,28 @@ a {
     linear-gradient(225deg, rgba(0, 0, 0, 0.06), transparent 42%),
     var(--surface-soft);
 }
+
+.btn-soft-3d {
+  @apply inline-flex h-[50px] min-w-[150px] items-center justify-center rounded-[30px] border border-[#8F9092] bg-[linear-gradient(to_top,#D8D9DB_0%,#fff_80%,#FDFDFD_100%)] px-6 text-[14px] font-semibold text-[#606060] shadow-none outline-none transition-all duration-200;
+  text-shadow: 0 1px #fff;
+}
+
+.btn-soft-3d:hover {
+  box-shadow:
+    0 4px 3px 1px #FCFCFC,
+    0 6px 8px #D6D7D9,
+    0 -4px 4px #CECFD1,
+    0 -6px 4px #FEFEFE,
+    inset 0 0 3px 3px #CECFD1;
+}
+
+.btn-soft-3d:active,
+.btn-soft-3d:focus {
+  box-shadow:
+    0 4px 3px 1px #FCFCFC,
+    0 6px 8px #D6D7D9,
+    0 -4px 4px #CECFD1,
+    0 -6px 4px #FEFEFE,
+    inset 0 0 5px 3px #999,
+    inset 0 0 30px #aaa;
+}
