@@ -121,7 +121,7 @@ export function Navbar() {
           </span>
         </a>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className={navButtonClass}>
               {link.label}
@@ -129,7 +129,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           {socialLinks.map(({ label, href, icon: Icon }) => (
             <Link
               key={label}
@@ -149,7 +149,7 @@ export function Navbar() {
           aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-navigation"
-          className={`${mobileMenuButtonClass} md:hidden`}
+          className={`${mobileMenuButtonClass} lg:hidden`}
           onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
         >
           {isMobileMenuOpen ? (
@@ -163,7 +163,7 @@ export function Navbar() {
       {isMobileMenuOpen ? (
         <div
           id="mobile-navigation"
-          className="mx-4 mb-4 rounded-[24px] border border-[#E2E2E2] bg-[#F2F2F2] p-4 shadow-[8px_8px_18px_#cfcfcf,-8px_-8px_18px_#ffffff] md:hidden"
+          className="mx-4 mb-4 rounded-[24px] border border-[#E2E2E2] bg-[#F2F2F2] p-4 shadow-[8px_8px_18px_#cfcfcf,-8px_-8px_18px_#ffffff] lg:hidden"
         >
           <div className="grid gap-3">
             {mobileNavLinks.map((link) => (

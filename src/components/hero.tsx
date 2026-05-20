@@ -93,7 +93,85 @@ export function Hero() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative z-10 mx-auto grid h-[680px] max-h-[calc(100svh-104px)] min-h-[560px] w-full max-w-[1320px] grid-cols-1 items-center gap-8 md:grid-cols-[0.9fr_minmax(500px,640px)_0.9fr] md:gap-0 xl:grid-cols-[0.88fr_minmax(560px,680px)_0.88fr]">
+      <div className="relative z-10 mx-auto flex w-full max-w-[720px] flex-col items-center pb-10 pt-7 lg:hidden">
+        <div className="grid w-full grid-cols-2 items-end gap-4">
+          <div className="text-left">
+            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.28em] text-[#A8A8A8]">
+              Product
+            </p>
+
+            <h1 className="text-[42px] font-black leading-[0.92] tracking-[-0.055em] text-[#303030]">
+              designer
+            </h1>
+          </div>
+
+          <div className="text-right">
+            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.28em] text-[#A8A8A8]">
+              Interface
+            </p>
+
+            <h2 className="whitespace-nowrap text-[38px] font-black leading-[0.92] tracking-[-0.055em] text-[#303030]">
+              {"<coder>"}
+            </h2>
+          </div>
+        </div>
+
+        <div className="relative mt-5 aspect-[1638/2048] w-[min(70vw,340px)]">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[24%] bg-gradient-to-b from-transparent via-background/75 to-background"
+          />
+
+          <div className="absolute inset-0 z-10">
+            <SafeImage
+              src={CODER_HERO_IMAGE}
+              alt="Diego Suque"
+              fill
+              priority
+              sizes="340px"
+              className={imageClassName}
+            />
+          </div>
+
+          <div
+            className="absolute inset-0 z-20 overflow-hidden"
+            style={{ clipPath: "inset(0 0 0 50%)" }}
+          >
+            <SafeImage
+              src={DESIGNER_HERO_IMAGE}
+              alt=""
+              fill
+              priority
+              sizes="340px"
+              className={imageClassName}
+            />
+          </div>
+        </div>
+
+        <div className="mt-5 grid gap-3 text-center">
+          <p className="mx-auto max-w-[360px] text-[15px] font-normal leading-[1.55] text-[#727272]">
+            Crio interfaces para produtos digitais complexos, unindo UX, UI e
+            design systems.
+          </p>
+
+          <p className="mx-auto max-w-[360px] text-[15px] font-normal leading-[1.55] text-[#727272]">
+            Construo interfaces responsivas com foco em clareza, estrutura e
+            implementação.
+          </p>
+        </div>
+
+        <div className="mt-6 flex w-full flex-col items-center gap-3 min-[390px]:flex-row min-[390px]:justify-center">
+          <Link href="/portfolio" className={heroButtonClass}>
+            Ver portfólio
+          </Link>
+
+          <Link href="/front-end" className={heroButtonClass}>
+            Ver front-end
+          </Link>
+        </div>
+      </div>
+
+      <div className="relative z-10 mx-auto hidden h-[680px] max-h-[calc(100svh-104px)] min-h-[560px] w-full max-w-[1320px] items-center gap-8 lg:grid lg:grid-cols-[0.9fr_minmax(500px,640px)_0.9fr] lg:gap-0 xl:grid-cols-[0.88fr_minmax(560px,680px)_0.88fr]">
         {/* Coder */}
         <motion.div
           className="order-2 text-center md:order-1 md:-mr-10 md:-translate-y-8 md:text-left xl:-mr-14 xl:-translate-y-4"
