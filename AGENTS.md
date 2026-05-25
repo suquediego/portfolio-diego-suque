@@ -1,30 +1,8 @@
-# AGENTS.md — Portfolio Diego Suque
+# Regras do projeto para o Codex
 
-Este arquivo define as instruções obrigatórias para o Codex neste repositório.
+## Regra principal
 
-Antes de qualquer alteração, leia este arquivo.
-
-Antes de qualquer alteração visual, layout, UI, responsividade, página de case ou componente de interface, leia também:
-
-- `DESIGN_GUIDE.md`
-
-## Objetivo do projeto
-
-Este projeto é o portfólio pessoal de Diego Suque, Product Designer / UX UI Designer, com foco em:
-
-- produtos financeiros;
-- dashboards operacionais;
-- gateway de pagamento;
-- PIX;
-- Payin e Payout;
-- KYC;
-- ledger;
-- sistemas B2B;
-- produtos white label;
-- interfaces para dados complexos;
-- front-end.
-
-O portfólio deve vender Diego como Product Designer que entende produto, UX, UI, dados, operação e tecnologia.
+Não redesenhar páginas inteiras sem pedido explícito. Trabalhar sempre preservando a direção visual atual, a hierarquia, os componentes existentes, a paleta, a tipografia, os espaçamentos principais e o estilo visual já aplicado.
 
 ## Stack
 
@@ -32,31 +10,62 @@ O portfólio deve vender Diego como Product Designer que entende produto, UX, UI
 - TypeScript
 - Tailwind CSS
 - Framer Motion
-- Componentes próprios
-- Lucide icons
-- SafeImage component
+- Lucide React
+- Componentes próprios em `src/components`
+- Imagens em `public/images`
 
 ## Regras obrigatórias
 
-- Não faça commit sem autorização explícita.
-- Não rode `git add`, `git commit` ou `git push` sem autorização explícita.
-- Não instale dependências sem autorização explícita.
-- Não altere arquivos fora do escopo pedido.
-- Não refatore o projeto inteiro sem autorização.
-- Não altere visual aprovado sem necessidade.
-- Não altere copy aprovada sem necessidade.
-- Não mude rotas sem autorização.
-- Não altere `next.config.ts` sem autorização.
-- Não altere caminhos de imagens sem verificar `basePath`.
-- Não criar componentes novos se a tarefa puder ser feita no arquivo autorizado.
+- Não alterar a direção visual sem autorização.
+- Não alterar paleta global.
+- Não alterar tipografia global.
+- Não substituir componentes existentes sem necessidade.
+- Não criar uma nova estética.
+- Não adicionar badges/pills.
+- Não mexer em navbar, footer, PageShell ou estrutura global sem pedido explícito.
+- Não inventar métricas, números ou resultados.
+- Não alterar imagens existentes sem pedido.
+- Não refatorar arquivos fora do escopo solicitado.
+- Não fazer mudanças de gosto pessoal.
+- Preservar responsividade.
+- Preservar a consistência visual do case Vanir.
+- Manter tom editorial, técnico, maduro e objetivo.
 
-## Validação obrigatória
+## Case Vanir
 
-Depois de qualquer alteração de código, rode:
+A tarefa principal é melhorar narrativa, copy e estrutura de argumento, sem mudar o design.
 
-```bash
-npm run lint
-npm run build
-```
+O case deve comunicar:
 
-Se a tarefa alterar apenas documentação, textos de guia ou arquivos sem impacto em código, não rode lint/build a menos que o usuário peça.
+“Eu ajudei a transformar uma operação financeira complexa em uma experiência rastreável, acionável e escalável, aumentando autonomia para clientes e times internos.”
+
+Ao editar o case Vanir:
+
+- manter os mockups atuais;
+- manter o estilo de cards atual;
+- manter o grid e espaçamentos principais;
+- usar os mesmos componentes e padrões já existentes;
+- adicionar seções apenas quando necessário;
+- se criar novos blocos, eles devem parecer parte da página atual;
+- manter estética limpa, premium, minimalista e madura.
+
+## Processo antes de editar
+
+Antes de alterar qualquer arquivo:
+
+1. Ler o arquivo do case Vanir.
+2. Identificar os componentes existentes.
+3. Listar quais mudanças pretende fazer.
+4. Alterar apenas o arquivo necessário.
+5. Ao final, explicar exatamente o que mudou.
+
+## Critério de pronto
+
+Uma alteração está pronta quando:
+
+- não quebrou o layout atual;
+- não alterou a identidade visual;
+- manteve responsividade;
+- melhorou a clareza narrativa;
+- não inventou métricas;
+- não adicionou elementos visuais fora do padrão.
