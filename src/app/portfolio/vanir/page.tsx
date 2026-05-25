@@ -34,24 +34,24 @@ const heroPills = [
 
 const impactCards = [
   {
-    metric: "Operação multi-merchant",
+    metric: "Leitura centralizada",
     description:
-      "Visão consolidada para acompanhar diferentes merchants em uma única interface.",
+      "Pay-in, payout, saldo e extratos reunidos em uma mesma camada.",
   },
   {
-    metric: "Investigação mais rápida",
+    metric: "Autonomia de investigação",
     description:
-      "Status, filtros e detalhes de transação acessíveis em poucos cliques.",
+      "Mais contexto para analisar transações e ocorrências.",
   },
   {
-    metric: "Menos dependência operacional",
+    metric: "Menos ambiguidade",
     description:
-      "Mais autonomia para clientes e times internos analisarem falhas, volumes e liquidações.",
+      "Status, filtros e detalhes reduziram dúvidas recorrentes.",
   },
   {
-    metric: "Leitura financeira centralizada",
+    metric: "Apoio à decisão",
     description:
-      "Saldo, payin, payout, settlement e extratos reunidos em uma experiência única.",
+      "Mais clareza para acompanhar operações de alto volume.",
   },
   {
     metric: "Alto volume diário",
@@ -64,22 +64,22 @@ const learningCards = [
   {
     title: "Clareza antes de estética",
     description:
-      "Em dashboards operacionais, beleza visual só funciona quando ajuda o usuário a entender e agir mais rápido.",
+      "Em dashboards financeiros, clareza visual e funcional andam juntas.",
   },
   {
     title: "Dados precisam virar ação",
     description:
-      "Cada componente precisava responder a uma necessidade real: encontrar, comparar, investigar ou decidir.",
+      "Cada informação precisa apoiar investigação, leitura ou decisão.",
   },
   {
-    title: "Produto se constrói perto da operação",
+    title: "Produto perto da operação",
     description:
-      "A proximidade com suporte, financeiro, comercial e tecnologia foi essencial para transformar dores reais em interface.",
+      "Dores reais surgem perto de quem usa e sustenta o produto.",
   },
   {
     title: "Complexidade precisa ser organizada",
     description:
-      "O papel do design foi reduzir esforço cognitivo sem esconder a profundidade da operação financeira.",
+      "Reduzir esforço sem esconder profundidade.",
   },
 ];
 
@@ -349,12 +349,12 @@ export default function VanirPage() {
               className="max-w-[560px] pt-2 lg:pt-20"
             >
               <h1 className="text-left text-[38px] font-black leading-[0.98] tracking-[-0.045em] text-[#303030] md:text-[48px] lg:text-[54px]">
-                Vanir: Dashboard operacional para gateways de alto volume.
+                Vanir: rastreabilidade para operações financeiras de alto volume.
               </h1>
 
               <p className="mt-7 max-w-[520px] text-left text-base leading-8 text-[#727272] md:text-xl md:leading-9">
-                Desenhando eficiência para fluxos transacionais complexos e
-                gestão de dados em tempo real.
+                Design de uma experiência para rastrear transações, interpretar
+                falhas e apoiar decisões em tempo real.
               </p>
 
               <div className="mt-8 flex max-w-[540px] flex-wrap gap-2.5">
@@ -396,21 +396,106 @@ export default function VanirPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Vanir é um gateway de pagamento criado para operações que não
-                  podem esperar. Em mercados de alto volume, como bet, iGaming e
-                  clientes white label, encontrar uma transação, entender uma
-                  falha ou acompanhar o saldo de um merchant precisa acontecer em
-                  segundos.
+                  O Vanir é um gateway de pagamento criado para centralizar e
+                  rastrear transações, saldos e movimentações financeiras em
+                  tempo real.
                 </p>
 
                 <p>
-                  O desafio era transformar uma operação financeira complexa em
-                  uma experiência clara, rápida e confiável, centralizando payin,
-                  payout, settlement, balance, relatórios e investigação de
-                  transações em tempo real.
+                  O desafio geral era transformar dados dispersos de pay-in,
+                  payout, settlement e falhas operacionais em uma experiência
+                  clara para monitoramento, investigação e tomada de decisão.
                 </p>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* CONTEXTO DO PRODUTO */}
+        <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-20 md:px-8 lg:min-h-[760px] lg:py-0">
+          <div className="mx-auto grid min-h-[620px] max-w-[1240px] items-center gap-12 lg:min-h-[760px] lg:grid-cols-[0.94fr_1.06fr] lg:gap-24 xl:grid-cols-[1fr_1fr] xl:gap-32">
+            <NavigationModulesVisual />
+
+            <motion.div
+              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.75, ease: "easeInOut" }}
+              className="max-w-[540px]"
+            >
+              <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
+                Contexto do produto
+              </h2>
+
+              <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
+                <p>
+                  O produto vivia entre clientes integrados via API, operações
+                  white label e times internos responsáveis por suporte,
+                  financeiro, produto e tecnologia.
+                </p>
+
+                <p>
+                  Ele precisava atender perfis técnicos e não técnicos dentro de
+                  uma mesma base de experiência, sem perder consistência entre
+                  diferentes marcas, permissões e formas de operação.
+                </p>
+
+                <p>
+                  Essa posição tornava o dashboard um ponto de encontro entre
+                  integração, acompanhamento financeiro e resolução de dúvidas
+                  operacionais.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* MEU PAPEL */}
+        <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+            <motion.div
+              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.75, ease: "easeInOut" }}
+              className="max-w-[540px]"
+            >
+              <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
+                Meu papel
+              </h2>
+
+              <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
+                <p>
+                  Atuei na organização da experiência do produto, conectando
+                  fluxos operacionais, hierarquia de informação e necessidades
+                  reais de investigação.
+                </p>
+
+                <p>
+                  Desenhei dashboards, filtros, tabelas e detalhes
+                  transacionais para tornar a leitura da operação mais clara e
+                  acionável.
+                </p>
+
+                <p>
+                  A atuação exigiu colaboração próxima com produto, tecnologia e
+                  operação para preservar consistência, escalabilidade e
+                  rastreabilidade na experiência.
+                </p>
+              </div>
+
+              <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
+                Mais do que desenhar telas, meu trabalho foi estruturar uma
+                camada visual e funcional para decisões operacionais recorrentes.
+              </p>
+            </motion.div>
+
+            <StaticBrowserMockup
+              imageSrc={`${basePath}/images/cases/vanir/vanir-product-design-process.png`}
+              alt="Processo de design do Vanir com tela de payout, drawer de filtros e especificações para desenvolvimento"
+              address="figma.com/vanir/design-process"
+              imageClassName="scale-[1.035] object-cover object-center"
+            />
           </div>
         </section>
 
@@ -440,7 +525,178 @@ export default function VanirPage() {
           </div>
         </section>
 
-        {/* O PROBLEMA */}
+        {/* CONTEXTO OPERACIONAL */}
+        <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+            <motion.div
+              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.75, ease: "easeInOut" }}
+              className="max-w-[540px]"
+            >
+              <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
+                Contexto operacional
+              </h2>
+
+              <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
+                <p>
+                  A operação exigia lidar com alto volume, saldos, status,
+                  falhas, múltiplos merchants e informações financeiras que
+                  precisavam ser interpretadas rapidamente.
+                </p>
+
+                <p>
+                  Quanto maior o fluxo, maior era o risco de uma dúvida simples
+                  virar retrabalho: entender uma transação, localizar uma
+                  ocorrência ou descobrir o contexto de uma falha.
+                </p>
+              </div>
+
+              <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
+                A experiência precisava organizar essas camadas sem esconder a
+                complexidade real da operação.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.75, ease: "easeInOut" }}
+              className="grid w-full gap-5 sm:grid-cols-2"
+            >
+              {[
+                {
+                  title: "Fluxo transacional",
+                  description:
+                    "Acompanhar entradas, saídas, status e eventos financeiros com precisão.",
+                },
+                {
+                  title: "Times conectados",
+                  description:
+                    "Suporte, financeiro, produto e clientes operando sobre a mesma base.",
+                },
+                {
+                  title: "Investigação recorrente",
+                  description:
+                    "Falhas e atrasos exigiam ir do resumo ao detalhe com rapidez.",
+                },
+                {
+                  title: "Escala white label",
+                  description:
+                    "Consistência operacional mesmo em diferentes marcas e contextos.",
+                },
+              ].map((card, index) => (
+                <div
+                  key={card.title}
+                  className={[
+                    "flex min-h-[230px] flex-col gap-6 rounded-[32px] border border-[#DADADA] bg-white p-7 shadow-[0_24px_70px_rgba(48,48,48,0.08)]",
+                    index === 1 ? "sm:translate-y-10" : "",
+                    index === 2 ? "sm:-translate-y-2" : "",
+                    index === 3 ? "sm:translate-y-8" : "",
+                  ].join(" ")}
+                >
+                  <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
+                    {card.title}
+                  </h3>
+
+                  <p className="text-sm leading-6 text-[#686868] md:text-base md:leading-7">
+                    {card.description}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* PRINCIPAIS DORES */}
+        <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
+            <motion.div
+              initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.75, ease: "easeInOut" }}
+              className="grid w-full gap-5 sm:grid-cols-2"
+            >
+              {[
+                {
+                  title: "Dependência técnica",
+                  description:
+                    "Consultas dependiam de logs, suporte ou leitura técnica.",
+                },
+                {
+                  title: "Dados fragmentados",
+                  description:
+                    "Informações espalhadas dificultavam análises rápidas.",
+                },
+                {
+                  title: "Status pouco acionável",
+                  description:
+                    "Falhar não bastava. Era preciso entender motivo, etapa e ação.",
+                },
+                {
+                  title: "Baixa autonomia",
+                  description:
+                    "Clientes e times internos dependiam de suporte para investigar.",
+                },
+              ].map((card, index) => (
+                <div
+                  key={card.title}
+                  className={[
+                    "flex min-h-[230px] flex-col gap-6 rounded-[32px] border border-[#DADADA] bg-[#F7F7F7] p-7 shadow-[0_24px_70px_rgba(48,48,48,0.06)]",
+                    index === 1 ? "sm:translate-y-10" : "",
+                    index === 2 ? "sm:-translate-y-2" : "",
+                    index === 3 ? "sm:translate-y-8" : "",
+                  ].join(" ")}
+                >
+                  <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
+                    {card.title}
+                  </h3>
+
+                  <p className="text-sm leading-6 text-[#686868] md:text-base md:leading-7">
+                    {card.description}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.75, ease: "easeInOut" }}
+              className="max-w-[540px]"
+            >
+              <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
+                Principais dores
+              </h2>
+
+              <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
+                <p>
+                  A complexidade não estava apenas no volume de transações, mas
+                  na dificuldade de transformar eventos técnicos e financeiros
+                  em respostas claras para a operação.
+                </p>
+
+                <p>
+                  O produto precisava diminuir o caminho entre identificar uma
+                  dúvida, encontrar o dado correto e entender o que poderia ser
+                  feito em seguida.
+                </p>
+              </div>
+
+              <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
+                Essas dores orientaram a estrutura do dashboard: rastreabilidade,
+                filtros, leitura de status e acesso rápido ao detalhe de cada
+                transação.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* O DESAFIO DE DESIGN */}
         <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
           <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
             <motion.div
@@ -451,26 +707,26 @@ export default function VanirPage() {
               className="max-w-[540px]"
             >
               <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
-                O problema
+                O desafio de design
               </h2>
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Em operações financeiras de alto volume, cada segundo importa.
+                  Minha missão foi traduzir esse cenário em uma interface que
+                  ajudasse o usuário a entender onde olhar, o que comparar e
+                  como avançar em uma investigação.
                 </p>
 
                 <p>
-                  Antes do dashboard, parte da investigação dependia da leitura
-                  de logs técnicos, endpoints, payloads JSON e eventos de
-                  webhook. Isso tornava a análise mais lenta e aumentava a
-                  dependência de pessoas técnicas para interpretar falhas ou
-                  localizar transações.
+                  O design precisava aproximar informação técnica e leitura
+                  operacional, criando caminhos claros para status, filtros,
+                  detalhes transacionais e decisões do dia a dia.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                O desafio era traduzir uma operação transacional complexa em uma
-                experiência simples, rápida e confiável.
+                O papel do design foi dar forma a uma experiência rastreável,
+                clara e acionável para usuários internos, clientes e merchants.
               </p>
             </motion.div>
 
@@ -479,97 +735,6 @@ export default function VanirPage() {
               alt="Logs técnicos no Axiom usados para investigação de fluxos do gateway"
               address="axiom.co/logs/gateway"
               imageClassName="scale-[1.04] object-cover object-center"
-            />
-          </div>
-        </section>
-
-        {/* CONTEXTO DO PRODUTO */}
-        <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-20 md:px-8 lg:min-h-[760px] lg:py-0">
-          <div className="mx-auto grid min-h-[620px] max-w-[1240px] items-center gap-12 lg:min-h-[760px] lg:grid-cols-[0.94fr_1.06fr] lg:gap-24 xl:grid-cols-[1fr_1fr] xl:gap-32">
-            <NavigationModulesVisual />
-
-            <motion.div
-              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.75, ease: "easeInOut" }}
-              className="max-w-[540px]"
-            >
-              <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
-                Contexto do produto
-              </h2>
-
-              <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
-                <p>
-                  O Vanir foi desenhado para empresas com diferentes estruturas
-                  operacionais. Alguns clientes tinham times técnicos próprios
-                  para integração via API; em outros casos, a equipe interna
-                  apoiava ou realizava parte da configuração para reduzir
-                  fricção na implementação.
-                </p>
-
-                <p>
-                  A plataforma precisava atender operação, suporte, financeiro,
-                  produto, times técnicos, clientes white label e merchants
-                  dentro de uma mesma base de experiência.
-                </p>
-
-                <p>
-                  Isso exigia uma interface flexível o suficiente para usuários
-                  técnicos e não técnicos, mantendo consistência no produto e
-                  permitindo adaptações de navegação, marca e chamadas visuais
-                  conforme o cliente.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* MEU PAPEL */}
-        <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
-            <motion.div
-              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.75, ease: "easeInOut" }}
-              className="max-w-[540px]"
-            >
-              <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
-                Meu papel
-              </h2>
-
-              <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
-                <p>
-                  Atuei desde a estruturação da experiência até a consolidação da
-                  interface final.
-                </p>
-
-                <p>
-                  O backend e uma estrutura provisória já existiam, mas a jornada
-                  ainda precisava ser organizada, refinada e transformada em um
-                  produto mais claro. A partir disso, desenhei os principais
-                  fluxos, telas e componentes da plataforma, com foco em
-                  dashboards, payin, payout e filtros para busca de transações.
-                </p>
-
-                <p>
-                  Minha atuação conectou produto, operação, suporte e comercial
-                  para transformar dores reais de uso em decisões de interface.
-                </p>
-              </div>
-
-              <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                Mais do que desenhar telas, meu trabalho foi dar forma visual e
-                funcional para problemas recorrentes da operação.
-              </p>
-            </motion.div>
-
-            <StaticBrowserMockup
-              imageSrc={`${basePath}/images/cases/vanir/vanir-product-design-process.png`}
-              alt="Processo de design do Vanir com tela de payout, drawer de filtros e especificações para desenvolvimento"
-              address="figma.com/vanir/design-process"
-              imageClassName="scale-[1.035] object-cover object-center"
             />
           </div>
         </section>
@@ -694,32 +859,24 @@ export default function VanirPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  A busca por transações foi uma das áreas que recebeu mais atenção no
-                  projeto.
+                  Em um gateway de pagamento, busca e filtros não são apenas
+                  recursos de conveniência. Eles funcionam como ferramentas de
+                  investigação para localizar transações, cruzar critérios e
+                  entender o que aconteceu em cada fluxo.
                 </p>
 
                 <p>
-                  Em operações com alto volume, uma tabela comum não é suficiente. O
-                  usuário precisa filtrar, cruzar informações e chegar rapidamente no
-                  dado certo.
-                </p>
-
-                <p>
-                  Os filtros foram desenhados para facilitar a localização de transações
-                  por merchant, status, período, tipo de operação e outros critérios
-                  relevantes para investigação.
-                </p>
-
-                <p>
-                  Ao clicar em uma transação, o usuário acessava o extrato detalhado da
-                  operação, entendendo status, caminho da transação e possíveis motivos
-                  de erro.
+                  Em operações com alto volume, o usuário precisa combinar
+                  merchant, status, período, tipo de operação e identificadores
+                  para chegar ao dado certo com confiança. Por isso, a estrutura
+                  de filtros foi pensada para reduzir o universo de análise e
+                  levar rapidamente ao detalhe da transação.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                Essa decisão reduziu a dependência de explicações externas e deu mais
-                autonomia para clientes e times internos.
+                O objetivo era dar autonomia para investigar transações sem
+                depender imediatamente de leitura técnica ou suporte.
               </p>
             </motion.div>
           </div>
@@ -741,26 +898,30 @@ export default function VanirPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Em produtos financeiros, mostrar que uma transação falhou não é
-                  suficiente. O usuário precisa entender por que ela falhou e qual o
-                  próximo passo possível.
+                  Em produtos financeiros, mostrar que uma transação falhou não
+                  é suficiente. O usuário precisa entender o status, em que etapa
+                  a falha ocorreu, qual pode ter sido o motivo e qual ação faz
+                  sentido a partir dali.
                 </p>
 
                 <p>
-                  Por isso, uma das prioridades da interface foi tornar status,
-                  mensagens de erro e detalhes transacionais mais claros e acessíveis.
+                  Por isso, a interface precisava tratar status, mensagens de
+                  erro e detalhes transacionais como parte do diagnóstico
+                  operacional, não apenas como informação complementar.
                 </p>
 
                 <p>
-                  A experiência permitia identificar rapidamente se uma transação estava
-                  concluída, pendente, falhada ou se o erro vinha de um parceiro externo,
-                  instabilidade bancária ou ambiente fora do controle da plataforma.
+                  A experiência organizava sinais importantes para reduzir
+                  ambiguidade: situação da transação, origem provável do erro,
+                  identificadores relevantes e contexto necessário para orientar
+                  suporte, financeiro, operação ou cliente.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                Com um clique, o usuário acessava detalhes da transação e possíveis
-                motivos de erro sem depender imediatamente do suporte.
+                A clareza de status ajudava o usuário a sair da dúvida genérica
+                para um diagnóstico mais objetivo, com menos interpretação
+                manual entre áreas.
               </p>
             </motion.div>
 
@@ -799,27 +960,30 @@ export default function VanirPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  O Vanir também precisava funcionar como solução white label, mantendo
-                  uma estrutura principal consistente e adaptável para diferentes
-                  clientes.
+                  O Vanir também precisava funcionar como solução white label,
+                  mas isso não significava apenas trocar cor ou logo. A decisão
+                  envolvia escalabilidade, consistência e governança da
+                  experiência.
                 </p>
 
                 <p>
-                  A base da interface permanecia limpa, clara e predominantemente
-                  branca. A personalização acontecia em pontos estratégicos como logo,
-                  chamadas, CTAs e navegação, conforme a necessidade de cada operação.
+                  A base da interface precisava continuar estável para preservar
+                  padrões de navegação, leitura de dados e manutenção do produto.
+                  A personalização ficava concentrada em pontos controlados,
+                  como marca, chamadas, CTAs e navegação.
                 </p>
 
                 <p>
-                  Essa abordagem permitia adaptar a experiência para diferentes marcas
-                  sem comprometer a consistência, a manutenção e a evolução do produto.
+                  Essa abordagem permitia atender diferentes marcas sem
+                  fragmentar a experiência, evitando que cada cliente se tornasse
+                  uma variação isolada e difícil de evoluir.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                O desafio de design era equilibrar personalização com escalabilidade: o
-                produto precisava parecer próprio para o cliente, mas continuar fácil de
-                operar internamente.
+                O desafio era equilibrar identidade de marca com uma estrutura
+                operacional única, consistente e sustentável para produto,
+                design e desenvolvimento.
               </p>
             </motion.div>
           </div>
@@ -841,28 +1005,57 @@ export default function VanirPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  As principais decisões de design foram guiadas por velocidade, clareza
-                  e confiança.
+                  As decisões de design foram guiadas por três prioridades:
+                  reduzir ambiguidade, acelerar a investigação e dar mais
+                  autonomia para usuários internos e clientes.
                 </p>
+              </div>
 
-                <p>
-                  Como o produto lidava com dados financeiros e alto volume
-                  transacional, a interface não podia competir com a informação. O
-                  design precisava organizar, priorizar e facilitar a leitura.
-                </p>
+              <div className="mt-8 space-y-6 text-left">
+                <div>
+                  <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
+                    Indicadores no topo
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
+                    Antes de investigar uma transação específica, o usuário
+                    precisava entender rapidamente o estado da operação: volume,
+                    status, movimentação e sinais de atenção.
+                  </p>
+                </div>
 
-                <p>
-                  A experiência priorizou indicadores críticos no topo, navegação clara
-                  para diferentes perfis, leitura rápida de status, filtros como parte
-                  central da investigação e proximidade entre dashboard e tabela de
-                  transações.
-                </p>
+                <div>
+                  <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
+                    Filtros como investigação
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
+                    Em alto volume, buscar uma transação exige cruzar período,
+                    status, operação, merchant e identificadores. A busca
+                    precisava funcionar como diagnóstico, não apenas como
+                    pesquisa.
+                  </p>
+                </div>
 
-                <p>
-                  Essas decisões ajudaram a reduzir dúvidas recorrentes, preparar a
-                  interface para clientes white label e criar uma experiência robusta
-                  sem afastar usuários não técnicos.
-                </p>
+                <div>
+                  <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
+                    Detalhe transacional
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
+                    A tabela ajudava a encontrar registros, mas o detalhe
+                    explicava contexto, status, informações principais e
+                    possíveis motivos de erro.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
+                    Base neutra para white label
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
+                    A interface precisava atender diferentes marcas sem
+                    fragmentar a experiência, preservando usabilidade,
+                    manutenção e coerência visual.
+                  </p>
+                </div>
               </div>
             </motion.div>
 
@@ -892,7 +1085,7 @@ export default function VanirPage() {
                 <div
                   key={card.metric}
                   className={[
-                    "flex min-h-[250px] flex-col justify-between rounded-[32px] border border-[#DADADA] bg-white p-7 shadow-[0_24px_70px_rgba(48,48,48,0.08)]",
+                    "flex min-h-[250px] flex-col gap-6 rounded-[32px] border border-[#DADADA] bg-white p-7 shadow-[0_24px_70px_rgba(48,48,48,0.08)]",
                     index === 1 ? "sm:translate-y-10" : "",
                     index === 2 ? "sm:-translate-y-2" : "",
                     index === 3 ? "sm:translate-y-8" : "",
@@ -903,12 +1096,12 @@ export default function VanirPage() {
                       Impacto percebido
                     </span>
 
-                    <h3 className="mt-5 text-[26px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
+                    <h3 className="mt-4 text-[26px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
                       {card.metric}
                     </h3>
                   </div>
 
-                  <p className="mt-8 text-sm leading-6 text-[#686868] md:text-base md:leading-7">
+                  <p className="text-sm leading-6 text-[#686868] md:text-base md:leading-7">
                     {card.description}
                   </p>
                 </div>
@@ -928,28 +1121,29 @@ export default function VanirPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  A evolução do Vanir transformou o dashboard em uma camada central de
-                  monitoramento, investigação e tomada de decisão para operações
-                  financeiras de alto volume.
+                  O impacto percebido do Vanir foi principalmente operacional.
+                  O dashboard passou a apoiar monitoramento, investigação e
+                  tomada de decisão em uma operação financeira de alto volume.
                 </p>
 
                 <p>
-                  Antes, dúvidas sobre falhas, atrasos, status e localização de
-                  transações dependiam com frequência de leitura técnica, consulta aos
-                  times internos ou cruzamento manual de informações.
+                  A experiência centralizou a leitura de pay-in, payout, saldo,
+                  extratos e transações, reduzindo ambiguidade sobre status,
+                  falhas, atrasos e movimentações financeiras.
                 </p>
 
                 <p>
-                  Com a nova experiência, clientes, merchants e áreas internas passaram
-                  a acessar essas respostas de forma mais direta dentro da própria
-                  plataforma.
+                  Com mais contexto disponível na própria plataforma, clientes,
+                  merchants e áreas internas ganharam mais autonomia para
+                  investigar ocorrências e responder dúvidas recorrentes sem
+                  depender imediatamente do suporte.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                O principal ganho foi operacional: mais autonomia para investigar
-                transações, melhor leitura de status e menor dependência do suporte para
-                dúvidas recorrentes.
+                O ganho operacional foi tornar a operação mais rastreável,
+                acionável e clara para quem precisava acompanhar volumes,
+                investigar transações e tomar decisões com mais segurança.
               </p>
             </motion.div>
           </div>
@@ -971,29 +1165,30 @@ export default function VanirPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  O Vanir mostrou como design de produto pode reduzir complexidade em
-                  ambientes financeiros de alta pressão.
+                  O Vanir reforçou que, em produtos financeiros, design de
+                  produto precisa organizar complexidade sem simplificar demais a
+                  realidade operacional.
                 </p>
 
                 <p>
-                  A principal lição foi que, em dashboards operacionais, beleza visual
-                  não pode estar separada de clareza. Cada componente precisa ajudar o
-                  usuário a encontrar uma transação, entender um erro, acompanhar um
-                  saldo ou tomar uma decisão rápida.
+                  A principal lição foi que clareza antes de estética não
+                  significa abrir mão de qualidade visual. Em dashboard
+                  financeiro, clareza visual e clareza funcional precisam andar
+                  juntas para que dados virem ação.
                 </p>
 
                 <p>
-                  O projeto também reforçou a importância de estar perto de quem usa e
-                  opera o produto. Trabalhar com suporte, comercial, financeiro e
-                  tecnologia ajudou a transformar problemas recorrentes em melhorias
-                  concretas de experiência.
+                  O projeto também mostrou que produto se constrói perto da
+                  operação. Trabalhar próximo de suporte, comercial, financeiro e
+                  tecnologia ajudou a entender dúvidas recorrentes, fluxos reais
+                  e pontos em que a interface precisava apoiar decisão.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                No fim, o Vanir deixou de ser apenas uma interface para visualizar
-                transações e passou a funcionar como uma camada de inteligência
-                operacional.
+                O aprendizado central foi que dados financeiros só geram valor
+                quando são organizados em uma experiência compreensível,
+                rastreável e acionável.
               </p>
             </motion.div>
 
@@ -1008,7 +1203,7 @@ export default function VanirPage() {
                 <div
                   key={card.title}
                   className={[
-                    "flex min-h-[250px] flex-col justify-between rounded-[32px] border border-[#DADADA] bg-[#F7F7F7] p-7 shadow-[0_24px_70px_rgba(48,48,48,0.06)]",
+                    "flex min-h-[250px] flex-col gap-6 rounded-[32px] border border-[#DADADA] bg-[#F7F7F7] p-7 shadow-[0_24px_70px_rgba(48,48,48,0.06)]",
                     index === 1 ? "sm:translate-y-10" : "",
                     index === 2 ? "sm:-translate-y-2" : "",
                     index === 3 ? "sm:translate-y-8" : "",
@@ -1019,12 +1214,12 @@ export default function VanirPage() {
                       Aprendizado
                     </span>
 
-                    <h3 className="mt-5 text-[26px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
+                    <h3 className="mt-4 text-[26px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
                       {card.title}
                     </h3>
                   </div>
 
-                  <p className="mt-8 text-sm leading-6 text-[#686868] md:text-base md:leading-7">
+                  <p className="text-sm leading-6 text-[#686868] md:text-base md:leading-7">
                     {card.description}
                   </p>
                 </div>
@@ -1050,14 +1245,15 @@ export default function VanirPage() {
               <div className="mx-auto mt-7 max-w-[760px] space-y-5 text-center text-base leading-8 text-[#686868] md:text-lg md:leading-8">
                 <p>
                   Por se tratar de um produto financeiro com dados sensíveis, este case
-                  não expõe nomes de clientes, merchants, CPFs, documentos, valores
-                  identificáveis ou informações privadas da operação.
+                  preserva nomes de clientes, merchants, CPFs, documentos, valores
+                  identificáveis, informações privadas da operação e dados estratégicos.
                 </p>
 
                 <p>
-                  As telas apresentadas no portfólio podem utilizar mockups, dados
-                  simulados ou volumes agregados, preservando a estrutura da experiência
-                  sem revelar informações estratégicas ou confidenciais.
+                  As telas apresentadas no portfólio podem utilizar mockups,
+                  dados simulados ou volumes agregados. O objetivo é mostrar a
+                  estrutura da experiência e as decisões de produto sem revelar
+                  informações confidenciais.
                 </p>
               </div>
 
