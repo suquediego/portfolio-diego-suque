@@ -1,73 +1,80 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import type { MouseEvent } from "react";
 
 import { PageShell } from "@/components/page-shell";
 import { SafeImage } from "@/components/safe-image";
 import { basePath } from "@/lib/base-path";
 
-type TiltState = {
-  rotateX: number;
-  rotateY: number;
-};
-
-type IPhone15ProMockupProps = {
-  src?: string;
-  alt?: string;
-  className?: string;
-};
-
 type MobileShowcaseProps = {
   src?: string;
   alt?: string;
   className?: string;
+  imageClassName?: string;
+  aspectClassName?: string;
+  maxWidthClassName?: string;
+};
+
+type EditorialImageShowcaseProps = {
+  src: string;
+  alt: string;
+  className?: string;
+  imageClassName?: string;
+  aspectClassName?: string;
+  maxWidthClassName?: string;
+};
+
+type FlowShowcaseProps = {
+  images: {
+    src: string;
+    alt: string;
+    aspectClassName: string;
+  }[];
 };
 
 const painCards = [
   {
-    title: "Comprovantes manuais",
+    title: "Pagamento nao reconhecido",
     description:
-      "A confirmacao dependia de leitura manual e comparacao visual em um fluxo presencial sujeito a pressa.",
+      "Quando o cliente paga, mas a operacao nao identifica a transacao com clareza, o atrito aparece na saida.",
   },
   {
-    title: "Duvidas na confirmacao",
+    title: "Duvidas na cobranca",
     description:
-      "Operadores e clientes precisavam de uma resposta mais clara sobre pagamento aprovado, pendente ou invalido.",
+      "Divergencia entre tempo, valor cobrado e comprovante aumenta inseguranca e reclamacoes.",
   },
   {
-    title: "Baixa rastreabilidade",
+    title: "Dependencia de atendimento",
     description:
-      "Sem uma leitura organizada, era mais dificil recuperar contexto de pagamento, ticket e atendimento.",
+      "Problemas simples passam a depender de guiche, SAC ou validacao manual.",
   },
   {
-    title: "Fluxo operacional lento",
+    title: "Fila e frustracao",
     description:
-      "Em alta rotatividade, qualquer friccao na validacao impacta atendimento, fila e confianca da operacao.",
+      "Em horarios de pico, pequenos atrasos se multiplicam e afetam a percepcao da marca.",
   },
 ];
 
 const impactCards = [
   {
-    metric: "Confirmacao mais clara",
+    metric: "Menos atrito na saida",
     description:
-      "Status de pagamento apresentado de forma direta para apoiar operador e cliente.",
+      "Pagamento pelo celular reduz dependencia de guiche, maquininha e atendimento presencial.",
   },
   {
-    metric: "Menos ambiguidade",
+    metric: "Mais clareza para o usuario",
     description:
-      "A experiencia reduz duvidas sobre comprovante, valor, ticket e situacao da validacao.",
+      "Valor, tempo de permanencia e metodo de pagamento ficam visiveis antes da confirmacao.",
   },
   {
-    metric: "Apoio ao atendimento",
+    metric: "Menos chamados simples",
     description:
-      "O fluxo mobile organiza informacoes essenciais para decisoes rapidas no ponto de operacao.",
+      "A confirmacao de status reduz a necessidade de comprovar manualmente o pagamento.",
   },
   {
-    metric: "Fluxo mais simples",
+    metric: "Mais fluidez operacional",
     description:
-      "A jornada prioriza leitura rapida, confirmacao objetiva e menor esforco operacional.",
+      "Menos filas e menos interacoes presenciais ajudam a melhorar o fluxo em horarios de pico.",
   },
 ];
 
@@ -94,88 +101,32 @@ const learningCards = [
   },
 ];
 
-function IPhone15ProMockup({
-  src,
-  alt = "Tela mobile do ParkingPix",
-  className = "",
-}: IPhone15ProMockupProps) {
-  return (
-    <div
-      className={[
-        "relative mx-auto aspect-[9/19.5] w-full max-w-[300px] rounded-[46px] border border-[#2A2A2A] bg-[#151515] p-2 shadow-[0_30px_80px_rgba(48,48,48,0.2)]",
-        className,
-      ].join(" ")}
-    >
-      <div className="absolute left-[-3px] top-[22%] h-12 w-[3px] rounded-l-full bg-[#303030]" />
-      <div className="absolute right-[-3px] top-[18%] h-16 w-[3px] rounded-r-full bg-[#303030]" />
-      <div className="absolute right-[-3px] top-[30%] h-12 w-[3px] rounded-r-full bg-[#303030]" />
-
-      <div className="relative h-full overflow-hidden rounded-[38px] border border-[#3A3A3A] bg-white">
-        <div className="absolute left-1/2 top-3 z-10 h-7 w-24 -translate-x-1/2 rounded-full bg-[#111111]" />
-
-        {src ? (
-          <SafeImage
-            src={src}
-            alt={alt}
-            fill
-            sizes="320px"
-            className="object-cover object-top"
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center bg-white px-8 text-center">
-            <span className="text-sm font-semibold leading-6 text-[#8A8A8A]">
-              Placeholder para tela mobile do ParkingPix
-            </span>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
+const parkingPixImages = {
+  camera: `${basePath}/images/parkingpix/parkingpix-camera-escaneia.png`,
+  paymentConfirmed: `${basePath}/images/parkingpix/parkingpix-pagamento-processado.png`,
+  paymentWaiting: `${basePath}/images/parkingpix/parkingpix-pagamento-processando.png`,
+  paymentQr: `${basePath}/images/parkingpix/parkingpix-pagamento-processando-1.png`,
+  summary: `${basePath}/images/parkingpix/parkingpix-resumo-do-tempo.png`,
+  ticket: `${basePath}/images/parkingpix/parkingpix-ticket.jpg`,
+};
 
 function HeroMobileMockup() {
-  const [tilt, setTilt] = useState<TiltState>({ rotateX: 0, rotateY: 0 });
-
-  function handleMouseMove(event: MouseEvent<HTMLDivElement>) {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = event.clientX - bounds.left;
-    const y = event.clientY - bounds.top;
-
-    const middleX = bounds.width / 2;
-    const middleY = bounds.height / 2;
-
-    const rotateY = ((x - middleX) / middleX) * 5;
-    const rotateX = -((y - middleY) / middleY) * 4;
-
-    setTilt({ rotateX, rotateY });
-  }
-
-  function handleMouseLeave() {
-    setTilt({ rotateX: 0, rotateY: 0 });
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0, x: 44, filter: "blur(10px)" }}
       animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
       transition={{ delay: 0.2, duration: 0.85, ease: "easeInOut" }}
-      className="w-full [perspective:1400px]"
+      className="w-full"
     >
-      <div
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="relative mx-auto flex min-h-[520px] w-full max-w-[620px] items-center justify-center rounded-[34px] border border-[#DDDDDD] bg-[#F7F7F7] p-8 shadow-[0_26px_70px_rgba(48,48,48,0.14)] transition-shadow duration-300 hover:shadow-[0_34px_90px_rgba(48,48,48,0.2)]"
-        style={{
-          transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
-          transformStyle: "preserve-3d",
-          transition: "transform 160ms ease-out",
-        }}
-      >
-        <div style={{ transform: "translateZ(24px)" }}>
-          <IPhone15ProMockup
-            src={`${basePath}/images/parkingpix/parkingpix-preview2.png`}
-            alt="Fluxo mobile de validacao de pagamento PIX no ParkingPix"
-            className="max-w-[292px]"
+      <div className="relative mx-auto flex w-full items-center justify-center">
+        <div className="relative aspect-[910/2278] w-full max-w-[480px]">
+          <SafeImage
+            src={parkingPixImages.paymentQr}
+            alt="Tela de pagamento PIX com QR Code no ParkingPix"
+            fill
+            priority
+            sizes="(min-width: 1024px) 480px, 88vw"
+            className="object-contain object-center"
           />
         </div>
       </div>
@@ -187,6 +138,9 @@ function MobileShowcase({
   src,
   alt = "Tela mobile do ParkingPix",
   className = "",
+  imageClassName = "object-contain object-center",
+  aspectClassName = "aspect-[910/2094]",
+  maxWidthClassName = "max-w-[390px]",
 }: MobileShowcaseProps) {
   return (
     <motion.div
@@ -196,26 +150,99 @@ function MobileShowcase({
       transition={{ duration: 0.75, ease: "easeInOut" }}
       className={["w-full", className].join(" ")}
     >
-      <div className="relative mx-auto flex min-h-[520px] w-full items-center justify-center overflow-hidden rounded-[34px] border border-[#DADADA] bg-[#F7F7F7] p-8 shadow-[0_24px_70px_rgba(48,48,48,0.12)]">
-        <div className="relative z-10">
-          <IPhone15ProMockup src={src} alt={alt} />
-        </div>
+      <div className="relative mx-auto flex w-full items-center justify-center">
+        {src ? (
+          <div className={`relative w-full ${maxWidthClassName} ${aspectClassName}`}>
+            <SafeImage
+              src={src}
+              alt={alt}
+              fill
+              sizes="(min-width: 1024px) 390px, 84vw"
+              className={imageClassName}
+            />
+          </div>
+        ) : (
+          <div className="flex aspect-[910/2094] w-full max-w-[320px] items-center justify-center rounded-[28px] border border-dashed border-[#CFCFCF] bg-white px-8 text-center">
+            <span className="text-sm font-semibold leading-6 text-[#8A8A8A]">
+              Placeholder para tela mobile do ParkingPix
+            </span>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+function EditorialImageShowcase({
+  src,
+  alt,
+  className = "",
+  imageClassName = "object-contain object-center",
+  aspectClassName = "aspect-[396/1194]",
+  maxWidthClassName = "max-w-[340px]",
+}: EditorialImageShowcaseProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.35 }}
+      transition={{ duration: 0.75, ease: "easeInOut" }}
+      className={["w-full", className].join(" ")}
+    >
+      <div className={`relative mx-auto w-full overflow-hidden rounded-[30px] border border-[#DADADA] bg-white shadow-[0_18px_50px_rgba(48,48,48,0.1)] ${maxWidthClassName} ${aspectClassName}`}>
+        <SafeImage
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 340px, 80vw"
+          className={imageClassName}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+function FlowShowcase({ images }: FlowShowcaseProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.28 }}
+      transition={{ duration: 0.75, ease: "easeInOut" }}
+      className="w-full"
+    >
+      <div className="relative mx-auto grid w-full items-start gap-8 sm:grid-cols-3 lg:min-w-[720px] lg:-translate-x-10 lg:gap-5 xl:min-w-[780px]">
+        {images.map((image, index) => (
+          <div
+            key={image.src}
+            className={[
+              `relative mx-auto w-full ${image.aspectClassName}`,
+              index === 1 ? "max-w-[250px] sm:translate-y-6 lg:max-w-[292px]" : "max-w-[230px] lg:max-w-[254px]",
+              index === 2 ? "sm:translate-y-12" : "",
+            ].join(" ")}
+          >
+            <SafeImage
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes="(min-width: 1024px) 292px, 76vw"
+              className="object-contain object-center"
+            />
+          </div>
+        ))}
       </div>
     </motion.div>
   );
 }
 
 export default function ParkingPixPage() {
-  const parkingPixPreview = `${basePath}/images/parkingpix/parkingpix-preview2.png`;
-  const parkingPixDetailPreview = `${basePath}/images/parkingpix/parkingpix-previwe2.png`;
-
   return (
     <PageShell variant="case">
       <article className="bg-white text-[#303030]">
         <section className="relative overflow-hidden px-5 pb-24 pt-16 md:px-8 md:pb-32 md:pt-24">
           <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-[#F2F2F2] blur-3xl" />
 
-          <div className="relative mx-auto grid max-w-[1240px] items-start gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+          <div className="relative mx-auto grid max-w-[1240px] items-start gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -44, filter: "blur(10px)" }}
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
@@ -223,14 +250,14 @@ export default function ParkingPixPage() {
               className="max-w-[560px] pt-2 lg:pt-20"
             >
               <h1 className="text-left text-[38px] font-black leading-[0.98] tracking-[-0.045em] text-[#303030] md:text-[48px] lg:text-[54px]">
-                ParkingPix: validacao mobile para pagamentos PIX em
-                estacionamentos.
+                ParkingPix: pagamento mobile via PIX para estacionamentos.
               </h1>
 
               <p className="mt-7 max-w-[520px] text-left text-base leading-8 text-[#727272] md:text-xl md:leading-9">
-                Design de uma experiencia simples para confirmar pagamentos,
-                reduzir duvidas operacionais e apoiar fluxos presenciais de alta
-                rotatividade.
+                Experiencia de pagamento por QR Code criada para reduzir filas,
+                dar clareza sobre o valor cobrado e permitir que o usuario
+                finalize a jornada do estacionamento pelo celular, sem depender
+                de maquininha, guiche ou atendimento presencial.
               </p>
             </motion.div>
 
@@ -239,10 +266,10 @@ export default function ParkingPixPage() {
         </section>
 
         <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
             <MobileShowcase
-              src={parkingPixPreview}
-              alt="Visao geral mobile do ParkingPix"
+              src={parkingPixImages.summary}
+              alt="Resumo do tempo de permanencia e valor final no ParkingPix"
             />
 
             <motion.div
@@ -258,15 +285,16 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  O ParkingPix foi pensado para operacoes de estacionamento que
-                  precisam validar pagamentos PIX de forma rapida, clara e
-                  confiavel.
+                  O ParkingPix propoe uma jornada mobile simples para
+                  estacionamentos: o usuario escaneia o QR Code do ticket,
+                  visualiza o tempo de permanencia, entende o valor final e
+                  escolhe pagar via PIX.
                 </p>
 
                 <p>
-                  A experiencia organiza pagamento, ticket e confirmacao em uma
-                  jornada mobile objetiva para reduzir friccao no atendimento e
-                  dar mais seguranca ao fluxo presencial.
+                  A experiencia foi pensada para reduzir atritos em uma etapa
+                  sensivel da jornada: o momento em que o cliente precisa pagar
+                  e sair rapidamente, especialmente em horarios de pico.
                 </p>
               </div>
             </motion.div>
@@ -274,7 +302,7 @@ export default function ParkingPixPage() {
         </section>
 
         <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -288,31 +316,49 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  A solucao conecta pagamento, confirmacao e operacao presencial
-                  em uma jornada simples, com foco em leitura rapida de status e
-                  reducao de friccao no atendimento.
+                  Em estacionamentos de shopping, o pagamento e um ponto de alto
+                  impacto na percepcao da experiencia. Filas, duvidas sobre
+                  cobranca, falhas em meios tradicionais e dependencia de
+                  atendimento transformam uma etapa simples em frustracao.
                 </p>
 
                 <p>
-                  O produto precisa funcionar em um ambiente de alta rotatividade,
-                  onde operador e cliente dependem de respostas claras para
-                  liberar o fluxo sem criar duvidas sobre comprovantes ou valores.
+                  O problema nao esta apenas no pagamento em si, mas na falta de
+                  clareza e rastreabilidade: o usuario precisa entender quanto
+                  deve pagar, confirmar que a transacao foi reconhecida e sair
+                  sem precisar provar manualmente que pagou.
                 </p>
               </div>
             </motion.div>
 
-            <MobileShowcase
-              src={parkingPixDetailPreview}
-              alt="Tela mobile de confirmacao de pagamento do ParkingPix"
+            <EditorialImageShowcase
+              src={parkingPixImages.ticket}
+              alt="Ticket com QR Code para pagamento via ParkingPix"
+              imageClassName="object-contain object-center"
             />
           </div>
         </section>
 
         <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
-            <MobileShowcase
-              src={parkingPixPreview}
-              alt="Fluxo principal mobile do ParkingPix"
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
+            <FlowShowcase
+              images={[
+                {
+                  src: parkingPixImages.summary,
+                  alt: "Resumo do tempo de permanencia e valor final",
+                  aspectClassName: "aspect-[910/2094]",
+                },
+                {
+                  src: parkingPixImages.paymentQr,
+                  alt: "Tela de pagamento PIX com QR Code",
+                  aspectClassName: "aspect-[910/2278]",
+                },
+                {
+                  src: parkingPixImages.paymentConfirmed,
+                  alt: "Pagamento confirmado no ParkingPix",
+                  aspectClassName: "aspect-[910/1990]",
+                },
+              ]}
             />
 
             <motion.div
@@ -328,15 +374,15 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  A jornada mobile precisava ser curta, legivel e facil de
-                  interpretar em movimento, com foco na confirmacao do pagamento
-                  e no estado atual do ticket.
+                  A jornada foi estruturada para ser direta: escanear o QR Code,
+                  conferir o resumo, escolher PIX, copiar ou escanear o codigo
+                  de pagamento e aguardar a confirmacao.
                 </p>
 
                 <p>
-                  Cada etapa foi pensada para reduzir esforco: identificar o
-                  ticket, conferir valor, acompanhar o PIX e exibir um retorno
-                  objetivo para continuidade da operacao.
+                  Cada etapa precisava reduzir ansiedade e deixar claro o que
+                  estava acontecendo, evitando abandono, duvidas ou acionamento
+                  desnecessario do atendimento.
                 </p>
               </div>
             </motion.div>
@@ -344,7 +390,7 @@ export default function ParkingPixPage() {
         </section>
 
         <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -371,9 +417,11 @@ export default function ParkingPixPage() {
               </div>
             </motion.div>
 
-            <MobileShowcase
-              src={parkingPixDetailPreview}
-              alt="Status operacional de pagamento no ParkingPix"
+            <EditorialImageShowcase
+              src={parkingPixImages.camera}
+              alt="Camera escaneando QR Code do ticket no ParkingPix"
+              aspectClassName="aspect-[780/1688]"
+              imageClassName="object-contain object-center"
             />
           </div>
         </section>
@@ -443,7 +491,7 @@ export default function ParkingPixPage() {
         </section>
 
         <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -457,14 +505,16 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Transformar a validacao de pagamentos PIX em uma experiencia
-                  mobile simples, clara e confiavel para operadores e clientes.
+                  O desafio foi desenhar uma experiencia simples para um momento
+                  de pressa. O usuario nao quer aprender um sistema novo: ele
+                  quer entender o valor, pagar com confianca e sair.
                 </p>
 
                 <p>
-                  O desenho precisava equilibrar simplicidade e confianca:
-                  mostrar somente o necessario, mas com contexto suficiente para
-                  evitar interpretacoes erradas no atendimento.
+                  Por isso, a interface precisava priorizar clareza, feedback de
+                  status e linguagem objetiva, mostrando o que fazer em cada
+                  etapa e evitando duvidas sobre pagamento, confirmacao e
+                  finalizacao.
                 </p>
               </div>
 
@@ -476,17 +526,19 @@ export default function ParkingPixPage() {
             </motion.div>
 
             <MobileShowcase
-              src={parkingPixPreview}
-              alt="Validacao mobile de pagamento PIX no ParkingPix"
+              src={parkingPixImages.paymentQr}
+              alt="Pagamento PIX com QR Code e codigo para copiar"
+              aspectClassName="aspect-[910/2278]"
             />
           </div>
         </section>
 
         <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
             <MobileShowcase
-              src={parkingPixDetailPreview}
-              alt="Confirmacao e status de pagamento no ParkingPix"
+              src={parkingPixImages.paymentConfirmed}
+              alt="Tela de pagamento confirmado no ParkingPix"
+              aspectClassName="aspect-[910/1990]"
             />
 
             <motion.div
@@ -502,15 +554,16 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Atuei na organizacao da jornada mobile, priorizando clareza de
-                  status, reducao de passos e leitura operacional para ambientes
-                  de atendimento presencial.
+                  Atuei na estruturacao da experiencia mobile, organizando o
+                  fluxo de pagamento, a hierarquia das informacoes e os estados
+                  principais da jornada.
                 </p>
 
                 <p>
-                  O trabalho conectou fluxo de pagamento, validacao, retorno ao
-                  operador e comunicacao com o cliente em uma experiencia simples
-                  e rastreavel.
+                  O trabalho envolveu pensar em uma experiencia clara para
+                  leitura de valor, escolha do metodo de pagamento, confirmacao
+                  via PIX e retorno final para o usuario, mantendo o foco em
+                  reduzir atrito operacional.
                 </p>
               </div>
             </motion.div>
@@ -518,7 +571,7 @@ export default function ParkingPixPage() {
         </section>
 
         <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -532,30 +585,33 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  A validacao precisava mostrar o estado do PIX com linguagem
-                  direta, destacando quando o pagamento estava confirmado,
-                  pendente ou exigia nova acao.
+                  A etapa de pagamento via PIX precisava deixar claro que o
+                  usuario poderia escanear o QR Code ou copiar o codigo, alem de
+                  mostrar o estado de espera enquanto a transacao era confirmada.
                 </p>
 
                 <p>
-                  A estrutura prioriza informacoes de decisao: valor, ticket,
-                  horario, status e orientacao de continuidade para o operador.
+                  Mensagens como aguardando confirmacao e nao feche esta janela
+                  ajudam a reduzir ansiedade e evitam que o usuario interrompa o
+                  fluxo antes da finalizacao.
                 </p>
               </div>
             </motion.div>
 
             <MobileShowcase
-              src={parkingPixPreview}
-              alt="Tela de validacao de pagamento PIX"
+              src={parkingPixImages.paymentWaiting}
+              alt="Tela de pagamento PIX aguardando confirmacao"
+              aspectClassName="aspect-[910/1790]"
             />
           </div>
         </section>
 
         <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
             <MobileShowcase
-              src={parkingPixDetailPreview}
-              alt="Detalhe de status e comprovante no ParkingPix"
+              src={parkingPixImages.paymentConfirmed}
+              alt="Confirmacao de pagamento aprovado no ParkingPix"
+              aspectClassName="aspect-[910/1990]"
             />
 
             <motion.div
@@ -571,14 +627,13 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  A confirmacao precisava evitar termos ambiguos e apresentar uma
-                  resposta facil de entender em poucos segundos.
+                  Apos a aprovacao, a interface confirma a transacao e orienta o
+                  usuario sobre a finalizacao da sessao.
                 </p>
 
                 <p>
-                  O status funciona como ponto de alinhamento entre cliente e
-                  operador, reduzindo discussoes sobre comprovante, valor pago ou
-                  liberacao do ticket.
+                  O objetivo e fechar o fluxo com seguranca, reforcando que o
+                  pagamento foi reconhecido e que o veiculo ja pode ser retirado.
                 </p>
               </div>
             </motion.div>
@@ -586,7 +641,7 @@ export default function ParkingPixPage() {
         </section>
 
         <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -608,39 +663,59 @@ export default function ParkingPixPage() {
               <div className="mt-8 space-y-6 text-left">
                 <div>
                   <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
-                    Status em primeiro plano
+                    Valor visivel antes da acao
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
-                    A tela precisa responder rapidamente se o pagamento foi
-                    confirmado, esta pendente ou precisa ser revisado.
+                    O usuario precisa entender tempo de permanencia e valor final
+                    antes de escolher como pagar.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
-                    Informacao minima suficiente
+                    Feedback constante de status
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
-                    Valor, ticket e horario aparecem como contexto de decisao,
-                    sem transformar o fluxo em uma tela administrativa pesada.
+                    A interface mostra quando o pagamento esta em andamento,
+                    quando precisa de acao e quando foi confirmado.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
-                    Linguagem operacional
+                    PIX como metodo familiar
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
-                    A copy prioriza comandos e retornos objetivos para uso em
-                    atendimento presencial.
+                    A escolha por PIX reduz aprendizado e conecta o fluxo a um
+                    metodo de pagamento ja conhecido pelo usuario.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
+                    Linguagem direta para reduzir ansiedade
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
+                    Mensagens curtas orientam o proximo passo e evitam duvidas
+                    durante a espera pela confirmacao.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
+                    Confirmacao clara no final
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
+                    O fechamento do fluxo precisa reduzir ansiedade e deixar
+                    claro que o usuario ja pode retirar o veiculo.
                   </p>
                 </div>
               </div>
             </motion.div>
 
             <MobileShowcase
-              src={undefined}
-              alt="Placeholder de tela mobile do ParkingPix"
+              src={parkingPixImages.summary}
+              alt="Resumo do tempo e valor como base das decisoes de design"
             />
           </div>
         </section>
@@ -666,7 +741,7 @@ export default function ParkingPixPage() {
                 >
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9A9A9A]">
-                      Impacto percebido
+                      Impacto projetado
                     </span>
 
                     <h3 className="mt-4 text-[26px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
@@ -694,22 +769,24 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  O impacto percebido do ParkingPix esta ligado a uma
-                  confirmacao mais clara, menos ambiguidade no atendimento e um
-                  fluxo mais simples para operacoes presenciais.
+                  O impacto esperado do ParkingPix esta na reducao de atritos
+                  recorrentes ligados ao pagamento: duvidas sobre cobranca,
+                  pagamento nao reconhecido, filas e dependencia de atendimento
+                  manual.
                 </p>
 
                 <p>
-                  A experiencia busca apoiar o operador com informacoes
-                  essenciais para validar pagamentos PIX sem depender de
-                  comprovantes manuais como unica fonte de decisao.
+                  Em operacoes de alto fluxo, reduzir segundos por veiculo e dar
+                  mais autonomia ao usuario pode gerar impacto direto na fluidez
+                  da saida, no volume de chamados e na percepcao de eficiencia da
+                  marca.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                A proposta e demonstrar uma direcao de produto mais clara,
-                rastreavel e simples para validacao de pagamento em contexto
-                presencial.
+                A proposta e demonstrar um impacto projetado de produto mais
+                claro, rastreavel e simples para validacao de pagamento em
+                contexto presencial.
               </p>
             </motion.div>
           </div>
@@ -730,16 +807,15 @@ export default function ParkingPixPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Em fluxos presenciais, uma boa experiencia mobile precisa ser
-                  direta, resistente a duvidas e facil de interpretar em poucos
-                  segundos.
+                  O ParkingPix reforca que solucoes simples podem ter grande
+                  impacto quando atacam o ponto certo da jornada.
                 </p>
 
                 <p>
-                  O aprendizado central e que pagamento digital em ambiente
-                  fisico nao depende apenas do checkout: depende da confirmacao,
-                  da linguagem de status e da confianca que a interface transmite
-                  no momento de atendimento.
+                  Em produtos operacionais, a experiencia nao precisa ser
+                  complexa para gerar valor. Ela precisa reduzir duvida, deixar
+                  o proximo passo claro e dar seguranca para que o usuario
+                  conclua a acao sem depender de suporte.
                 </p>
               </div>
             </motion.div>
