@@ -34,29 +34,63 @@ const heroPills = [
 
 const impactCards = [
   {
-    metric: "Leitura centralizada",
+    label: "Eficiência operacional",
+    metric: "65% a 75% menos chamados operacionais",
     description:
-      "Pay-in, payout, saldo e extratos reunidos em uma mesma camada.",
+      "Redução estimada com base em registros no ClickUp e relatórios mensais de chamados e resoluções.",
   },
   {
-    metric: "Autonomia de investigação",
+    label: "Redução de volume",
+    metric: "De mais de 100 para 20–25 chamados",
     description:
-      "Mais contexto para analisar transações e ocorrências.",
+      "Queda no volume de dúvidas recorrentes por período após a centralização das informações em dashboards, filtros e gráficos.",
   },
   {
-    metric: "Menos ambiguidade",
+    label: "Escala de suporte",
+    metric: "Suporte de 6 para 3 pessoas",
     description:
-      "Status, filtros e detalhes reduziram dúvidas recorrentes.",
+      "A maior autonomia das áreas internas e dos clientes reduziu a necessidade de atendimento para dúvidas operacionais simples.",
   },
   {
-    metric: "Apoio à decisão",
+    label: "Autonomia técnica",
+    metric: "Menos dependência técnica",
     description:
-      "Mais clareza para acompanhar operações de alto volume.",
+      "Desenvolvedores passaram a ser acionados apenas quando havia indício real de problema interno ou necessidade de investigação técnica.",
   },
   {
-    metric: "Alto volume diário",
+    label: "Impacto para clientes",
+    metric: "Mais autonomia para clientes e merchants",
     description:
-      "Interface preparada para apoiar operações financeiras com grande fluxo transacional.",
+      "Clientes passaram a acessar dashboards e consultas com os mesmos dados referentes às suas próprias transações.",
+  },
+  {
+    label: "Impacto para áreas internas",
+    metric: "Mais clareza para suporte, operação e comercial",
+    description:
+      "As áreas passaram a identificar se o problema era interno, do cliente ou externo, como falhas relacionadas ao Pix/BACEN.",
+  },
+];
+
+const impactComparison = [
+  {
+    title: "Antes",
+    items: [
+      "Consulta manual de webhooks no Axiom",
+      "Interpretação de JSON para entender status",
+      "Dependência de dev para investigar casos simples",
+      "Suporte com pouca autonomia",
+      "Operação sem visão rápida de volume, falhas e anomalias",
+    ],
+  },
+  {
+    title: "Depois",
+    items: [
+      "Dashboard centralizado de pagamentos",
+      "Filtros por período e status",
+      "Indicadores de Balance, Payin, Payout e Settlement",
+      "Gráficos de volume por período e em tempo real",
+      "Áreas internas e clientes com mais autonomia de consulta",
+    ],
   },
 ];
 
@@ -1072,31 +1106,86 @@ export default function VanirPage() {
         </section>
 
         {/* IMPACTO */}
-        <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
-          <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
+        <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 md:py-32">
+          <div className="mx-auto max-w-[1240px]">
+            <motion.div
+              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.75, ease: "easeInOut" }}
+              className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20"
+            >
+              <div className="max-w-[560px]">
+                <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
+                  Impacto da solução
+                </h2>
+
+                <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
+                  <p>
+                    Antes das melhorias, a análise de transações no Vanir
+                    dependia de uma rotina altamente técnica. Para entender se
+                    uma transação estava paga, pendente, com erro ou em outro
+                    estado, as equipes precisavam consultar webhooks no Axiom e
+                    interpretar arquivos JSON antes de responder clientes.
+                  </p>
+
+                  <p>
+                    Com a evolução da interface, o Vanir passou a centralizar
+                    informações críticas em dashboards, filtros, tabelas e
+                    gráficos, dando mais autonomia para suporte, operação,
+                    comercial e clientes acompanharem transações e identificarem
+                    problemas com mais clareza.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid w-full gap-5 sm:grid-cols-2">
+                {impactCards.slice(0, 4).map((card, index) => (
+                  <div
+                    key={card.metric}
+                    className={[
+                      "flex min-h-[250px] flex-col gap-6 rounded-[32px] border border-[#DADADA] bg-white p-7 shadow-[0_24px_70px_rgba(48,48,48,0.08)]",
+                      index === 1 ? "sm:translate-y-10" : "",
+                      index === 2 ? "sm:-translate-y-2" : "",
+                      index === 3 ? "sm:translate-y-8" : "",
+                    ].join(" ")}
+                  >
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9A9A9A]">
+                        {card.label}
+                      </span>
+
+                      <h3 className="mt-4 text-[25px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[28px]">
+                        {card.metric}
+                      </h3>
+                    </div>
+
+                    <p className="text-sm leading-6 text-[#686868] md:text-base md:leading-7">
+                      {card.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.75, ease: "easeInOut" }}
-              className="grid w-full gap-5 sm:grid-cols-2"
+              className="mt-20 grid gap-5 md:grid-cols-2 lg:mt-24"
             >
-              {impactCards.slice(0, 4).map((card, index) => (
+              {impactCards.slice(4).map((card) => (
                 <div
                   key={card.metric}
-                  className={[
-                    "flex min-h-[250px] flex-col gap-6 rounded-[32px] border border-[#DADADA] bg-white p-7 shadow-[0_24px_70px_rgba(48,48,48,0.08)]",
-                    index === 1 ? "sm:translate-y-10" : "",
-                    index === 2 ? "sm:-translate-y-2" : "",
-                    index === 3 ? "sm:translate-y-8" : "",
-                  ].join(" ")}
+                  className="flex min-h-[220px] flex-col gap-6 rounded-[32px] border border-[#DADADA] bg-white p-7 shadow-[0_24px_70px_rgba(48,48,48,0.08)] md:p-8"
                 >
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9A9A9A]">
-                      Impacto percebido
+                      {card.label}
                     </span>
 
-                    <h3 className="mt-4 text-[26px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
+                    <h3 className="mt-4 text-[25px] font-bold leading-[1.05] tracking-[-0.035em] text-[#303030] md:text-[30px]">
                       {card.metric}
                     </h3>
                   </div>
@@ -1109,42 +1198,33 @@ export default function VanirPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+              initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.4 }}
+              viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.75, ease: "easeInOut" }}
-              className="max-w-[540px]"
+              className="mt-20 grid gap-5 lg:mt-24 lg:grid-cols-2"
             >
-              <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
-                Impacto
-              </h2>
+              {impactComparison.map((column) => (
+                <div
+                  key={column.title}
+                  className="rounded-[32px] border border-[#DADADA] bg-[#F7F7F7] p-7 shadow-[0_24px_70px_rgba(48,48,48,0.06)] md:p-8"
+                >
+                  <h3 className="text-[30px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[36px]">
+                    {column.title}
+                  </h3>
 
-              <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
-                <p>
-                  O impacto percebido do Vanir foi principalmente operacional.
-                  O dashboard passou a apoiar monitoramento, investigação e
-                  tomada de decisão em uma operação financeira de alto volume.
-                </p>
-
-                <p>
-                  A experiência centralizou a leitura de pay-in, payout, saldo,
-                  extratos e transações, reduzindo ambiguidade sobre status,
-                  falhas, atrasos e movimentações financeiras.
-                </p>
-
-                <p>
-                  Com mais contexto disponível na própria plataforma, clientes,
-                  merchants e áreas internas ganharam mais autonomia para
-                  investigar ocorrências e responder dúvidas recorrentes sem
-                  depender imediatamente do suporte.
-                </p>
-              </div>
-
-              <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                O ganho operacional foi tornar a operação mais rastreável,
-                acionável e clara para quem precisava acompanhar volumes,
-                investigar transações e tomar decisões com mais segurança.
-              </p>
+                  <ul className="mt-7 space-y-4 text-left text-sm leading-6 text-[#686868] md:text-base md:leading-7">
+                    {column.items.map((item) => (
+                      <li
+                        key={item}
+                        className="border-l border-[#BDBDBD] pl-4"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </motion.div>
           </div>
         </section>
