@@ -17,75 +17,89 @@ type StaticBrowserMockupProps = {
   imageSrc?: string;
   alt?: string;
   address?: string;
+  frameClassName?: string;
   imageClassName?: string;
+  imageWrapperClassName?: string;
+  autoScroll?: boolean;
+  scrollDistance?: string;
+  scrollDuration?: number;
+};
+
+const heimdallImages = {
+  clipboard: `${basePath}/images/heimdall/heimdall-area-de-transferência.png`,
+  dataSource: `${basePath}/images/heimdall/heimdall-fonte-de-dados.png`,
+  queue: `${basePath}/images/heimdall/heimdall-fila-de-requisição.png`,
+  registry: `${basePath}/images/heimdall/heimdall-dados-cadastrais.png`,
+  relationalSearch: `${basePath}/images/heimdall/heimdall-pesquisa-relacional.png`,
+  search: `${basePath}/images/heimdall/heimdall-pesquisa.png`,
 };
 
 const painCards = [
   {
     title: "Consulta fragmentada",
     description:
-      "Informacoes cadastrais, historico e sinais de risco precisavam ser lidos em contextos diferentes.",
+      "Analistas precisavam alternar entre fontes, planilhas e consultas manuais para montar uma visão completa.",
   },
   {
-    title: "Status pouco claros",
+    title: "Dados sensíveis dispersos",
     description:
-      "A leitura de validacao precisava explicar situacao, origem do sinal e proximo passo possivel.",
+      "Vínculos, histórico, exposição política e inconsistências ficavam espalhados em leituras pouco conectadas.",
   },
   {
     title: "Baixa rastreabilidade",
     description:
-      "Times internos precisavam recuperar consultas, eventos e decisoes com mais contexto operacional.",
+      "Consultas e evidências precisavam ser recuperadas com mais contexto para justificar decisões em cenários regulados.",
   },
   {
-    title: "Dependencia operacional",
+    title: "Decisão pouco acionável",
     description:
-      "Analises simples ainda exigiam apoio de areas tecnicas ou leitura manual de informacoes sensiveis.",
+      "Dados brutos exigiam interpretação manual antes de virar uma aprovação, reprovação ou investigação adicional.",
   },
 ];
 
 const impactCards = [
   {
-    metric: "Leitura centralizada",
+    metric: "Análise centralizada",
     description:
-      "Consultas, validacoes e sinais de risco reunidos em uma mesma camada de analise.",
+      "Dados cadastrais, vínculos, histórico e sinais de risco reunidos em uma mesma jornada de investigação.",
   },
   {
-    metric: "Mais autonomia",
+    metric: "Mais velocidade",
     description:
-      "Times internos ganham mais contexto para analisar CPFs e fluxos cadastrais.",
+      "Analistas conseguem partir de uma consulta simples para uma leitura mais profunda sem perder contexto.",
   },
   {
-    metric: "Menos ambiguidade",
+    metric: "Mais rastreabilidade",
     description:
-      "Status, historico e detalhes ajudam a reduzir interpretacoes soltas entre areas.",
+      "Consultas, fontes e evidências ficam mais organizadas para apoiar decisões justificáveis.",
   },
   {
-    metric: "Apoio a decisao",
+    metric: "Apoio ao risco",
     description:
-      "A experiencia organiza sinais para apoiar compliance, operacao e suporte.",
+      "A experiência ajuda compliance, fraude e risco a identificar inconsistências e relações relevantes.",
   },
 ];
 
 const learningCards = [
   {
-    title: "Sinal nao e decisao",
+    title: "Sinal não é decisão",
     description:
-      "A interface precisa separar evidencia, contexto e acao para evitar leituras precipitadas.",
+      "A interface precisa separar evidência, contexto e ação para evitar conclusões precipitadas.",
   },
   {
     title: "Risco precisa de contexto",
     description:
-      "Validacao cadastral fica mais util quando o usuario entende origem, historico e recorrencia.",
+      "Validação cadastral fica mais útil quando o usuário entende origem, histórico, vínculos e recorrência.",
   },
   {
-    title: "Clareza protege a operacao",
+    title: "Clareza protege a decisão",
     description:
-      "Produtos de KYC exigem cuidado visual para tornar dados sensiveis compreensiveis sem expor demais.",
+      "Produtos de KYC precisam tornar dados sensíveis compreensíveis sem simplificar demais o risco.",
   },
   {
-    title: "Investigacao deve ser rastreavel",
+    title: "Investigação deve ser rastreável",
     description:
-      "Cada consulta precisa ajudar o time a reconstruir o caminho da analise com seguranca.",
+      "Cada consulta precisa ajudar o time a reconstruir o caminho da análise com segurança operacional.",
   },
 ];
 
@@ -143,14 +157,14 @@ function BrowserMockup() {
             </div>
           </div>
 
-          <div className="relative h-[430px] overflow-hidden bg-white">
+          <div className="relative aspect-[2200/954] overflow-hidden bg-white">
             <SafeImage
-              src={`${basePath}/images/heimdall-preview1.png`}
-              alt="Dashboard de KYC do Heimdall"
+              src={heimdallImages.relationalSearch}
+              alt="Mapa relacional de vínculos e sinais de risco no Heimdall"
               fill
               priority
               sizes="680px"
-              className="object-cover object-top"
+              className="object-contain object-center"
             />
           </div>
         </div>
@@ -164,14 +178,14 @@ function BrowserMockup() {
           <div className="ml-3 h-5 flex-1 rounded-full border border-[#DDDDDD] bg-white" />
         </div>
 
-        <div className="relative h-[280px] overflow-hidden bg-white sm:h-[360px]">
+        <div className="relative aspect-[2200/954] overflow-hidden bg-white">
           <SafeImage
-            src={`${basePath}/images/heimdall-preview1.png`}
-            alt="Dashboard de KYC do Heimdall"
+            src={heimdallImages.relationalSearch}
+            alt="Mapa relacional de vínculos e sinais de risco no Heimdall"
             fill
             priority
             sizes="(min-width: 640px) 640px, 100vw"
-            className="object-cover object-top"
+            className="object-contain object-center"
           />
         </div>
       </div>
@@ -183,7 +197,12 @@ function StaticBrowserMockup({
   imageSrc,
   alt = "Imagem do produto Heimdall",
   address = "heimdall.rivuspay.com/product",
-  imageClassName = "object-cover object-top",
+  frameClassName = "h-[390px]",
+  imageClassName = "object-contain object-center",
+  imageWrapperClassName = "h-full",
+  autoScroll = false,
+  scrollDistance = "-24%",
+  scrollDuration = 20,
 }: StaticBrowserMockupProps) {
   return (
     <motion.div
@@ -207,15 +226,34 @@ function StaticBrowserMockup({
             </div>
           </div>
 
-          <div className="relative h-[390px] overflow-hidden bg-white">
+          <div className={`relative overflow-hidden bg-white ${frameClassName}`}>
             {imageSrc ? (
-              <SafeImage
-                src={imageSrc}
-                alt={alt}
-                fill
-                sizes="680px"
-                className={imageClassName}
-              />
+              autoScroll ? (
+                <motion.div
+                  role="img"
+                  aria-label={alt}
+                  className={`absolute inset-x-0 top-0 bg-top bg-no-repeat ${imageWrapperClassName}`}
+                  style={{
+                    backgroundImage: `url(${imageSrc})`,
+                    backgroundSize: "100% auto",
+                  }}
+                  animate={{ y: ["0%", scrollDistance, "0%"] }}
+                  transition={{
+                    duration: scrollDuration,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "easeInOut",
+                  }}
+                />
+              ) : (
+                <SafeImage
+                  src={imageSrc}
+                  alt={alt}
+                  fill
+                  sizes="680px"
+                  className={imageClassName}
+                />
+              )
             ) : (
               <div className="flex h-full items-center justify-center px-6">
                 <div className="flex h-[78%] w-full max-w-[520px] items-center justify-center rounded-[22px] border border-dashed border-[#CFCFCF] bg-white text-center">
@@ -233,9 +271,6 @@ function StaticBrowserMockup({
 }
 
 export default function HeimdallPage() {
-  const heimdallPreview = `${basePath}/images/heimdall-preview1.png`;
-  const heimdallDetailPreview = `${basePath}/images/heimdall-previwe2.png`;
-
   return (
     <PageShell variant="case">
       <article className="bg-white text-[#303030]">
@@ -250,14 +285,14 @@ export default function HeimdallPage() {
               className="max-w-[560px] pt-2 lg:pt-20"
             >
               <h1 className="text-left text-[38px] font-black leading-[0.98] tracking-[-0.045em] text-[#303030] md:text-[48px] lg:text-[54px]">
-                Heimdall: inteligencia de KYC para validacao e risco
-                operacional.
+                Heimdall: inteligência de KYC para validação e risco
+                operacional
               </h1>
 
               <p className="mt-7 max-w-[520px] text-left text-base leading-8 text-[#727272] md:text-xl md:leading-9">
-                Design de uma experiencia para consultar CPFs, interpretar
-                sinais de risco e apoiar decisoes em fluxos de cadastro e
-                operacao.
+                Plataforma de análise cadastral criada para apoiar times de
+                compliance, fraude e risco na validação de pessoas e empresas
+                com mais velocidade, rastreabilidade e segurança.
               </p>
             </motion.div>
 
@@ -268,10 +303,13 @@ export default function HeimdallPage() {
         <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
           <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
             <StaticBrowserMockup
-              imageSrc={heimdallPreview}
-              alt="Visao geral do dashboard de KYC do Heimdall"
+              imageSrc={heimdallImages.registry}
+              alt="Dados cadastrais consolidados no Heimdall"
               address="heimdall.rivuspay.com/overview"
-              imageClassName="scale-[1.02] object-cover object-top"
+              imageWrapperClassName="h-[1180px]"
+              autoScroll
+              scrollDistance="-34%"
+              scrollDuration={28}
             />
 
             <motion.div
@@ -282,28 +320,28 @@ export default function HeimdallPage() {
               className="max-w-[540px]"
             >
               <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
-                Visao geral
+                Visão geral
               </h2>
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  O Heimdall e uma solucao de KYC criada para centralizar
-                  consultas, validacoes e sinais de risco em uma experiencia
-                  clara para times internos e operacoes financeiras.
+                  O Heimdall é uma solução de KYC e análise cadastral voltada
+                  para operações que precisam validar identidades, investigar
+                  vínculos e tomar decisões com base em dados confiáveis.
                 </p>
 
                 <p>
-                  A proposta da interface e organizar dados sensiveis em uma
-                  leitura operacional consistente, apoiando cadastro,
-                  compliance, suporte e analise de risco sem expor informacoes
-                  alem do necessario.
+                  A plataforma centraliza informações de diferentes fontes em
+                  uma interface única, reduzindo a necessidade de alternar entre
+                  sistemas, planilhas e consultas manuais durante uma análise.
+                  Com isso, analistas conseguem identificar inconsistências e
+                  construir uma visão mais completa sobre pessoas e empresas.
                 </p>
               </div>
             </motion.div>
           </div>
         </section>
-
-        <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
+                <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
           <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
             <motion.div
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
@@ -318,24 +356,28 @@ export default function HeimdallPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  O produto conecta dados cadastrais, historico de consultas,
-                  status de validacao e sinais comportamentais para apoiar
-                  analises mais rapidas e consistentes.
+                  Em operações financeiras e reguladas, validar um CPF ou CNPJ
+                  não é apenas confirmar dados básicos. É preciso entender
+                  histórico, vínculos, exposição política, relações
+                  empresariais, sinais de fraude e possíveis inconsistências.
                 </p>
 
                 <p>
-                  A experiencia precisava atender usuarios internos que lidam
-                  com investigacao, suporte, compliance e operacao, mantendo uma
-                  base comum para leitura de CPF, risco e eventos relacionados.
+                  Antes de uma experiência centralizada, esse processo tende a
+                  ser fragmentado. O Heimdall foi pensado para organizar essa
+                  complexidade em uma jornada mais fluida, permitindo que o
+                  analista saia de uma consulta simples para uma investigação
+                  mais profunda sem perder contexto.
                 </p>
               </div>
             </motion.div>
 
             <StaticBrowserMockup
-              imageSrc={heimdallDetailPreview}
-              alt="Tela do Heimdall com consulta de CPF e sinais de risco"
-              address="heimdall.rivuspay.com/cpf/detail"
-              imageClassName="scale-[1.02] object-cover object-top"
+              imageSrc={heimdallImages.search}
+              alt="Busca de CPF e CNPJ no Heimdall"
+              address="heimdall.rivuspay.com/search"
+              frameClassName="aspect-[2980/1528]"
+              imageClassName="object-contain object-center"
             />
           </div>
         </section>
@@ -344,10 +386,13 @@ export default function HeimdallPage() {
           <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
             <div className="grid gap-5">
               <StaticBrowserMockup
-                imageSrc={heimdallPreview}
-                alt="Visao macro de consultas no Heimdall"
-                address="heimdall.rivuspay.com/consultas"
-                imageClassName="scale-[1.02] object-cover object-top"
+                imageSrc={heimdallImages.registry}
+                alt="Visão detalhada de dados cadastrais consolidados no Heimdall"
+                address="heimdall.rivuspay.com/registry"
+                imageWrapperClassName="h-[1180px]"
+                autoScroll
+                scrollDistance="-34%"
+                scrollDuration={30}
               />
             </div>
 
@@ -359,20 +404,21 @@ export default function HeimdallPage() {
               className="max-w-[540px]"
             >
               <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
-                Visao macro e detalhe
+                Visão macro e detalhe
               </h2>
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  A pagina precisava alternar entre leitura ampla da operacao e
-                  investigacao pontual de um CPF, sem separar demais o fluxo de
-                  trabalho.
+                  A experiência foi desenhada para funcionar em dois níveis:
+                  visão macro para leitura rápida do risco e visão detalhada
+                  para investigação aprofundada.
                 </p>
 
                 <p>
-                  A visao macro ajuda a acompanhar volume de consultas, status e
-                  recorrencias. O detalhe concentra informacoes necessarias para
-                  interpretar cada validacao com mais seguranca.
+                  No primeiro contato, o analista precisa entender rapidamente
+                  se aquele cadastro apresenta sinais de atenção. Em seguida,
+                  precisa acessar dados consolidados, vínculos, histórico,
+                  fontes consultadas e evidências que sustentem a decisão.
                 </p>
               </div>
             </motion.div>
@@ -394,24 +440,27 @@ export default function HeimdallPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Em uma operacao financeira, a validacao cadastral nao termina
-                  no retorno de uma consulta. O time precisa entender historico,
-                  comportamento, status e possiveis inconsistencias.
+                  O Heimdall atende uma rotina em que velocidade e precisão
+                  precisam andar juntas. Analistas lidam com múltiplas
+                  consultas, diferentes níveis de risco e decisões que precisam
+                  ser justificáveis.
                 </p>
 
                 <p>
-                  O Heimdall foi estruturado como um ponto de consulta e
-                  investigacao para reduzir saltos entre ferramentas, preservar
-                  contexto e apoiar decisoes internas com mais clareza.
+                  Nesse cenário, a interface não poderia apenas exibir dados.
+                  Ela precisava organizar a investigação, indicar prioridade,
+                  reduzir dúvidas e apoiar decisões auditáveis para analistas,
+                  gestores e áreas responsáveis por conformidade.
                 </p>
               </div>
             </motion.div>
 
             <StaticBrowserMockup
-              imageSrc={heimdallDetailPreview}
-              alt="Historico operacional e status de validacao no Heimdall"
-              address="heimdall.rivuspay.com/risk/history"
-              imageClassName="scale-[1.02] object-cover object-center"
+              imageSrc={heimdallImages.queue}
+              alt="Fila de requisições e rastreabilidade operacional no Heimdall"
+              address="heimdall.rivuspay.com/requests"
+              frameClassName="aspect-[2200/954]"
+              imageClassName="object-contain object-center"
             />
           </div>
         </section>
@@ -465,15 +514,18 @@ export default function HeimdallPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  O desafio central era reduzir a friccao de analise sem
-                  simplificar demais um processo que envolve dados sensiveis,
-                  sinais tecnicos e criterios operacionais.
+                  As principais dores estavam ligadas à fragmentação da análise
+                  e à dificuldade de transformar dados brutos em decisão.
+                  Analistas precisavam consultar múltiplas fontes para montar um
+                  perfil completo, aumentando tempo de investigação e risco de
+                  omissões.
                 </p>
 
                 <p>
-                  A experiencia precisava ajudar o usuario a entender o que foi
-                  consultado, qual status foi retornado, quais sinais merecem
-                  atencao e como reconstruir uma investigacao depois.
+                  Sinais importantes como vínculos empresariais, relações
+                  familiares, exposição política, histórico de endereços e
+                  inconsistências cadastrais ficavam espalhados, dificultando uma
+                  leitura rápida do risco.
                 </p>
               </div>
             </motion.div>
@@ -495,29 +547,31 @@ export default function HeimdallPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Transformar dados sensiveis e sinais tecnicos de validacao em
-                  uma interface clara, rastreavel e acionavel para usuarios
-                  internos.
+                  O principal desafio foi transformar uma massa de dados
+                  cadastrais, relacionais e operacionais em uma experiência
+                  compreensível para quem precisa tomar decisões rápidas.
                 </p>
 
                 <p>
-                  A solucao precisava comunicar risco sem alarmismo, status sem
-                  ambiguidade e detalhe tecnico sem exigir que toda analise fosse
-                  feita por times de tecnologia.
+                  A interface precisava entregar profundidade sem sobrecarregar
+                  o usuário, organizando informações sensíveis de forma clara,
+                  hierárquica e acionável para compliance, fraude e risco.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                A direcao foi tratar KYC como uma experiencia de investigacao:
-                cada dado deveria ter contexto, origem e utilidade operacional.
+                O desafio não era apenas mostrar mais dados, mas ajudar o
+                analista a entender o que exigia atenção, quais vínculos
+                poderiam indicar risco e quais evidências sustentavam a decisão.
               </p>
             </motion.div>
 
             <StaticBrowserMockup
-              imageSrc={heimdallPreview}
-              alt="Dashboard do Heimdall com organizacao de sinais de KYC"
-              address="heimdall.rivuspay.com/risk"
-              imageClassName="scale-[1.02] object-cover object-top"
+              imageSrc={heimdallImages.relationalSearch}
+              alt="Pesquisa relacional com mapa de vínculos no Heimdall"
+              address="heimdall.rivuspay.com/relations"
+              frameClassName="aspect-[2200/954]"
+              imageClassName="object-contain object-center"
             />
           </div>
         </section>
@@ -525,10 +579,11 @@ export default function HeimdallPage() {
         <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
           <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
             <StaticBrowserMockup
-              imageSrc={heimdallDetailPreview}
-              alt="Detalhe de consulta cadastral no Heimdall"
-              address="heimdall.rivuspay.com/cpf/consulta"
-              imageClassName="scale-[1.02] object-cover object-center"
+              imageSrc={heimdallImages.clipboard}
+              alt="Área de transferência com coleções de análise no Heimdall"
+              address="heimdall.rivuspay.com/workspace"
+              frameClassName="aspect-[2200/954]"
+              imageClassName="object-contain object-center"
             />
 
             <motion.div
@@ -544,22 +599,23 @@ export default function HeimdallPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Atuei na organizacao da experiencia de consulta e analise,
-                  estruturando hierarquia de informacao, fluxos de investigacao
-                  e leitura de status para times internos.
+                  Atuei na estruturação da experiência e da interface do
+                  Heimdall, organizando a jornada de análise cadastral desde a
+                  consulta inicial até a leitura dos dados consolidados e sinais
+                  de risco.
                 </p>
 
                 <p>
-                  O trabalho conectou necessidades de produto, operacao e
-                  compliance para transformar informacoes tecnicas em uma base
-                  mais clara de decisao.
+                  O trabalho envolveu transformar informações técnicas e
+                  sensíveis em telas mais claras, com hierarquia visual,
+                  organização de conteúdo e fluxos pensados para reduzir esforço
+                  operacional para analistas, gestores e compliance.
                 </p>
               </div>
             </motion.div>
           </div>
         </section>
-
-        <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
+                <section className="relative overflow-hidden bg-[#F3F3F3] px-5 py-24 md:px-8 lg:min-h-[760px]">
           <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
             <motion.div
               initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
@@ -569,29 +625,31 @@ export default function HeimdallPage() {
               className="max-w-[540px]"
             >
               <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
-                Consulta e validacao
+                Consulta e validação
               </h2>
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  A consulta de CPF precisava apresentar resultado, historico e
-                  inconsistencias de forma progressiva, permitindo leitura
-                  rapida sem esconder detalhes importantes.
+                  A consulta cadastral foi pensada como o ponto de entrada da
+                  análise. O objetivo era permitir que o analista encontrasse
+                  pessoas ou empresas com rapidez, usando CPF ou CNPJ, sem
+                  alternar entre diferentes ferramentas.
                 </p>
 
                 <p>
-                  A interface organiza sinais de validacao para que o usuario
-                  entenda o estado da analise antes de navegar por informacoes
-                  complementares.
+                  A partir da busca, o sistema direciona o usuário para uma
+                  visão consolidada, reunindo dados cadastrais, contatos,
+                  endereços, vínculos e informações relevantes para a validação.
                 </p>
               </div>
             </motion.div>
 
             <StaticBrowserMockup
-              imageSrc={heimdallPreview}
-              alt="Fluxo de consulta e validacao de CPF no Heimdall"
+              imageSrc={heimdallImages.search}
+              alt="Fluxo de consulta e validação de CPF no Heimdall"
               address="heimdall.rivuspay.com/validation"
-              imageClassName="scale-[1.02] object-cover object-top"
+              frameClassName="aspect-[2980/1528]"
+              imageClassName="object-contain object-center"
             />
           </div>
         </section>
@@ -599,10 +657,11 @@ export default function HeimdallPage() {
         <section className="relative overflow-hidden bg-white px-5 py-24 md:px-8 lg:min-h-[760px]">
           <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
             <StaticBrowserMockup
-              imageSrc={heimdallDetailPreview}
-              alt="Sinais de risco e comportamento transacional no Heimdall"
-              address="heimdall.rivuspay.com/behavior"
-              imageClassName="scale-[1.02] object-cover object-center"
+              imageSrc={heimdallImages.relationalSearch}
+              alt="Sinais de risco e vínculos relacionais no Heimdall"
+              address="heimdall.rivuspay.com/risk"
+              frameClassName="aspect-[2200/954]"
+              imageClassName="object-contain object-center"
             />
 
             <motion.div
@@ -618,15 +677,16 @@ export default function HeimdallPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  Sinais comportamentais e cadastrais precisavam aparecer como
-                  apoio a investigacao, nao como uma conclusao automatica e sem
-                  contexto.
+                  Além de apresentar dados cadastrais, o Heimdall precisava
+                  destacar sinais que exigem atenção durante a análise.
                 </p>
 
                 <p>
-                  A leitura foi pensada para separar dados basicos, alertas,
-                  recorrencias e historico de consulta, criando uma base mais
-                  objetiva para analise interna.
+                  Informações como exposição política, vínculos empresariais,
+                  relações indiretas, histórico de dados e inconsistências
+                  ajudam o analista a interpretar melhor o contexto de cada
+                  pessoa ou empresa sem transformar a interface em um painel
+                  excessivamente técnico.
                 </p>
               </div>
             </motion.div>
@@ -643,53 +703,58 @@ export default function HeimdallPage() {
               className="max-w-[540px]"
             >
               <h2 className="text-left text-[36px] font-bold leading-[1] tracking-[-0.035em] text-[#303030] md:text-[44px] lg:text-[48px]">
-                Decisoes de design
+                Decisões de design
               </h2>
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  As decisoes de design foram guiadas por clareza operacional,
-                  rastreabilidade e cuidado com informacoes sensiveis.
+                  As principais decisões de design foram guiadas por três
+                  objetivos: clareza, rastreabilidade e velocidade de análise.
                 </p>
               </div>
 
               <div className="mt-8 space-y-6 text-left">
                 <div>
                   <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
-                    Status como diagnostico
+                    Leitura progressiva
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
-                    O status precisava indicar situacao, contexto e possivel
-                    caminho de analise, nao apenas uma resposta isolada.
+                    A interface apresenta primeiro o essencial e permite
+                    aprofundar em dados, vínculos e evidências conforme a
+                    necessidade da investigação.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
-                    Detalhe progressivo
+                    Linguagem sóbria
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
-                    Informacoes sensiveis foram organizadas em camadas para
-                    preservar leitura rapida e reduzir exposicao desnecessaria.
+                    O produto precisava transmitir confiança e critério por
+                    lidar com dados sensíveis, compliance e tomada de decisão em
+                    ambientes regulados.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
-                    Historico rastreavel
+                    Risco com evidência
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
-                    Eventos e consultas precisam ajudar o time a entender como
-                    uma analise evoluiu ao longo do tempo.
+                    Dados cadastrais, vínculos e histórico foram organizados
+                    para ajudar o analista a entender o que sustenta cada
+                    aprovação, reprovação ou investigação adicional.
                   </p>
                 </div>
               </div>
             </motion.div>
 
             <StaticBrowserMockup
-              imageSrc={undefined}
-              alt="Placeholder de decisoes de design do Heimdall"
-              address="heimdall.rivuspay.com/design"
+              imageSrc={heimdallImages.dataSource}
+              alt="Configuração de fontes de dados no Heimdall"
+              address="heimdall.rivuspay.com/data-sources"
+              frameClassName="aspect-[2200/954]"
+              imageClassName="object-contain object-center"
             />
           </div>
         </section>
@@ -743,22 +808,24 @@ export default function HeimdallPage() {
 
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
-                  O impacto previsto para o Heimdall esta ligado a uma leitura
-                  mais centralizada de consultas, validacoes e sinais de risco
-                  dentro da operacao.
+                  O impacto previsto para o Heimdall está ligado à redução da
+                  dispersão na análise cadastral. Ao reunir dados, vínculos,
+                  histórico e sinais de risco em uma mesma jornada, a plataforma
+                  apoia uma rotina de KYC mais clara e rastreável.
                 </p>
 
                 <p>
-                  A experiencia busca dar mais autonomia para analise interna,
-                  reduzir ambiguidade em status e apoiar decisoes de compliance,
-                  suporte e operacao.
+                  A experiência busca dar mais autonomia para analistas,
+                  gestores e times de compliance, fraude e risco, reduzindo
+                  ambiguidade e ajudando o usuário a transformar dados
+                  cadastrais em decisões mais seguras.
                 </p>
               </div>
 
               <p className="mt-7 border-l border-[#BDBDBD] pl-5 text-left text-sm font-semibold leading-7 text-[#303030] md:text-base md:leading-8">
-                A proposta nao e afirmar resultado numerico, mas demonstrar uma
-                direcao de produto mais rastreavel, acionavel e consistente para
-                investigacao de KYC.
+                A proposta não é afirmar resultado numérico, mas demonstrar uma
+                direção de produto mais rastreável, acionável e consistente para
+                validação, investigação e risco operacional.
               </p>
             </motion.div>
           </div>
@@ -780,15 +847,16 @@ export default function HeimdallPage() {
               <div className="mt-7 space-y-5 text-left text-base leading-8 text-[#686868] md:text-xl md:leading-9">
                 <p>
                   Produtos de KYC exigem uma interface que organize complexidade
-                  com responsabilidade. Dados sensiveis precisam ser legiveis,
-                  mas tambem precisam ser tratados com criterio.
+                  com responsabilidade. Dados sensíveis precisam ser legíveis,
+                  mas também precisam preservar contexto, critério e segurança
+                  operacional.
                 </p>
 
                 <p>
-                  O aprendizado principal e que uma boa experiencia de
-                  validacao nao apenas mostra informacoes: ela ajuda o usuario a
-                  interpretar sinais, recuperar contexto e decidir com mais
-                  seguranca operacional.
+                  O aprendizado principal é que uma boa experiência de análise
+                  cadastral não apenas mostra informações: ela ajuda o usuário a
+                  interpretar sinais, recuperar contexto e justificar decisões
+                  em cenários regulados.
                 </p>
               </div>
             </motion.div>
@@ -844,16 +912,16 @@ export default function HeimdallPage() {
 
               <div className="mx-auto mt-7 max-w-[760px] space-y-5 text-center text-base leading-8 text-[#686868] md:text-lg md:leading-8">
                 <p>
-                  Por se tratar de uma solucao de KYC e analise de risco, este
+                  Por se tratar de uma solução de KYC e análise de risco, este
                   case preserva CPFs, nomes, documentos, clientes, consultas,
-                  criterios internos e dados sensiveis da operacao.
+                  critérios internos e dados sensíveis da operação.
                 </p>
 
                 <p>
                   As telas apresentadas podem utilizar mockups, dados simulados
-                  ou placeholders. O objetivo e demonstrar estrutura de
-                  experiencia, hierarquia de informacao e decisoes de produto
-                  sem revelar informacoes confidenciais.
+                  ou placeholders. O objetivo é demonstrar estrutura de
+                  experiência, hierarquia de informação e decisões de produto
+                  sem revelar informações confidenciais.
                 </p>
               </div>
 

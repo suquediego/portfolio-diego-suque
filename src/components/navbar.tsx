@@ -111,7 +111,7 @@ export function Navbar() {
         >
           <span className="relative block h-[58px] w-[58px]">
             <SafeImage
-              src={`${basePath}/images/logo-suque.png`}
+              src={`${basePath}/images/portfolio/logo-suque.png`}
               alt="Logo Diego Suque"
               fill
               priority

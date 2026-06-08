@@ -94,7 +94,7 @@ export const cases: CaseData[] = [
       "Arquitetura da informação, dashboards operacionais, Payin, Payout, settlement, filtros, transações e experiência white label.",
     focus: "Dashboard, Payin, Payout e rastreabilidade",
     coverImage: {
-      src: `${basePath}/images/vanir-preview.png`,
+      src: `${basePath}/images/vanir/vanir-preview.png`,
       alt: "Preview do case Vanir",
     },
     heroImage: {

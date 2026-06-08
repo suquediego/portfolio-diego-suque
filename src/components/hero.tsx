@@ -11,8 +11,8 @@ import {
 import { SafeImage } from "@/components/safe-image";
 import { basePath } from "@/lib/base-path";
 
-const CODER_HERO_IMAGE = `${basePath}/images/dev-hero-3.png`;
-const DESIGNER_HERO_IMAGE = `${basePath}/images/suque-hero.png`;
+const CODER_HERO_IMAGE = `${basePath}/images/portfolio/dev-hero-3.png`;
+const DESIGNER_HERO_IMAGE = `${basePath}/images/portfolio/suque-hero.png`;
 
 const heroButtonClass = "btn-soft-3d";
 

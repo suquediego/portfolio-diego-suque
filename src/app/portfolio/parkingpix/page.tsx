@@ -173,7 +173,7 @@ function HeroMobileMockup() {
       >
         <div style={{ transform: "translateZ(24px)" }}>
           <IPhone15ProMockup
-            src={`${basePath}/images/parkingpix-preview2.png`}
+            src={`${basePath}/images/parkingpix/parkingpix-preview2.png`}
             alt="Fluxo mobile de validacao de pagamento PIX no ParkingPix"
             className="max-w-[292px]"
           />
@@ -206,8 +206,8 @@ function MobileShowcase({
 }
 
 export default function ParkingPixPage() {
-  const parkingPixPreview = `${basePath}/images/parkingpix-preview2.png`;
-  const parkingPixDetailPreview = `${basePath}/images/parkingpix-previwe2.png`;
+  const parkingPixPreview = `${basePath}/images/parkingpix/parkingpix-preview2.png`;
+  const parkingPixDetailPreview = `${basePath}/images/parkingpix/parkingpix-previwe2.png`;
 
   return (
     <PageShell variant="case">
