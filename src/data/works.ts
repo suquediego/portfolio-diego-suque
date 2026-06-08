@@ -7,17 +7,19 @@ export type Work = {
   image: string;
   hoverImage: string;
   href: string;
+  ctaLabel?: string;
 };
 
 export const works: Work[] = [
   {
     title: "Vanir",
-    category: "Gateway de pagamento",
+    category: "GATEWAY DE PAGAMENTO",
     description:
-      "Gateway de pagamento para operações PIX com foco em performance, estabilidade, monitoramento operacional e experiência para merchants.",
+      "Transformei dados técnicos de pagamentos PIX em dashboards operacionais mais claros para suporte, comercial e operação, reduzindo dúvidas recorrentes e aumentando a autonomia dos times.",
     image: `${basePath}/images/vanir/vanir-preview.png`,
     hoverImage: `${basePath}/images/vanir/vanir-previwe2.png`,
     href: "/portfolio/vanir",
+    ctaLabel: "Ver case completo",
   },
   {
     title: "Heimdall",

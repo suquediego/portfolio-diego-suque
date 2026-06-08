@@ -14,6 +14,15 @@ export function WorkCard({ work }: WorkCardProps) {
   const cardRef = useRef<HTMLAnchorElement | null>(null);
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const isMainCase = work.title === "Vanir";
+  const desktopOrder =
+    work.title === "Heimdall"
+      ? "xl:order-1"
+      : work.title === "Vanir"
+        ? "xl:order-2"
+        : work.title === "ParkingPix"
+          ? "xl:order-3"
+          : "";
 
   function handleMouseMove(event: React.MouseEvent<HTMLAnchorElement>) {
     if (!cardRef.current) return;
@@ -33,7 +42,13 @@ export function WorkCard({ work }: WorkCardProps) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
-      className="group relative block overflow-hidden rounded-[24px] border border-[#E2E2E2] bg-[#E8E8E8] p-[10px] shadow-[8px_8px_18px_#cfcfcf,-8px_-8px_18px_#ffffff] transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[13px_13px_28px_#c9c9c9,-13px_-13px_28px_#ffffff]"
+      className={[
+        "group relative block overflow-hidden rounded-[24px] border bg-[#E8E8E8] p-[10px] transition-all duration-300",
+        desktopOrder,
+        isMainCase
+          ? "border-[#D6D6D6] shadow-[8px_8px_18px_#cfcfcf,-8px_-8px_18px_#ffffff] hover:-translate-y-[5px] hover:shadow-[13px_13px_28px_#c9c9c9,-13px_-13px_28px_#ffffff] xl:z-10 xl:-translate-y-3 xl:scale-[1.04] xl:border-[#CFCFCF] xl:shadow-[14px_14px_32px_#c7c7c7,-14px_-14px_32px_#ffffff] xl:hover:-translate-y-4 xl:hover:scale-[1.045] xl:hover:shadow-[16px_16px_36px_#c4c4c4,-16px_-16px_36px_#ffffff]"
+          : "border-[#E2E2E2] shadow-[8px_8px_18px_#cfcfcf,-8px_-8px_18px_#ffffff] hover:-translate-y-[5px] hover:shadow-[13px_13px_28px_#c9c9c9,-13px_-13px_28px_#ffffff]",
+      ].join(" ")}
     >
       <div
         aria-hidden="true"
@@ -82,7 +97,7 @@ export function WorkCard({ work }: WorkCardProps) {
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
             <span className="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-[30px] border border-[#8F9092] bg-[linear-gradient(to_top,#D8D9DB_0%,#fff_80%,#FDFDFD_100%)] px-5 text-[14px] font-semibold text-[#606060] shadow-none outline-none transition-all duration-300 [text-shadow:0_1px_#fff] hover:text-[#303030] hover:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_3px_3px_#CECFD1] sm:min-w-[150px] sm:px-6">
-              Ver projeto
+              {work.ctaLabel ?? "Ver projeto"}
             </span>
 
             <span className="grid size-11 place-items-center rounded-full border border-[#8F9092] bg-[linear-gradient(to_top,#D8D9DB_0%,#fff_80%,#FDFDFD_100%)] text-[#606060] shadow-none outline-none transition-all duration-300 hover:translate-x-1 hover:text-[#202020] hover:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_3px_3px_#CECFD1] active:shadow-[0_4px_3px_1px_#FCFCFC,0_6px_8px_#D6D7D9,0_-4px_4px_#CECFD1,0_-6px_4px_#FEFEFE,inset_0_0_5px_3px_#999,inset_0_0_30px_#aaa]">
