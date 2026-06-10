@@ -118,15 +118,15 @@ function HeroMobileMockup() {
       transition={{ delay: 0.2, duration: 0.85, ease: "easeInOut" }}
       className="w-full"
     >
-      <div className="relative mx-auto flex w-full items-center justify-center">
-        <div className="relative aspect-[910/2278] w-full max-w-[480px]">
+      <div className="relative mx-auto flex w-full items-center justify-center lg:justify-end lg:pt-14">
+        <div className="relative aspect-[910/2278] w-full max-w-[240px] drop-shadow-[0_24px_45px_rgba(0,0,0,0.14)] md:max-w-[260px] lg:max-w-[300px]">
           <SafeImage
             src={parkingPixImages.paymentQr}
             alt="Tela de pagamento PIX com QR Code no ParkingPix"
             fill
             priority
-            sizes="(min-width: 1024px) 480px, 88vw"
-            className="object-contain object-center"
+            sizes="(min-width: 1024px) 300px, 70vw"
+            className="scale-[0.92] object-contain object-center"
           />
         </div>
       </div>
@@ -140,7 +140,7 @@ function MobileShowcase({
   className = "",
   imageClassName = "object-contain object-center",
   aspectClassName = "aspect-[910/2094]",
-  maxWidthClassName = "max-w-[390px]",
+  maxWidthClassName = "max-w-[300px]",
 }: MobileShowcaseProps) {
   return (
     <motion.div
@@ -157,7 +157,7 @@ function MobileShowcase({
               src={src}
               alt={alt}
               fill
-              sizes="(min-width: 1024px) 390px, 84vw"
+              sizes="(min-width: 1024px) 300px, 78vw"
               className={imageClassName}
             />
           </div>
@@ -179,7 +179,7 @@ function EditorialImageShowcase({
   className = "",
   imageClassName = "object-contain object-center",
   aspectClassName = "aspect-[396/1194]",
-  maxWidthClassName = "max-w-[340px]",
+  maxWidthClassName = "max-w-[280px]",
 }: EditorialImageShowcaseProps) {
   return (
     <motion.div
@@ -194,7 +194,7 @@ function EditorialImageShowcase({
           src={src}
           alt={alt}
           fill
-          sizes="(min-width: 1024px) 340px, 80vw"
+          sizes="(min-width: 1024px) 280px, 76vw"
           className={imageClassName}
         />
       </div>
@@ -211,21 +211,21 @@ function FlowShowcase({ images }: FlowShowcaseProps) {
       transition={{ duration: 0.75, ease: "easeInOut" }}
       className="w-full"
     >
-      <div className="relative mx-auto grid w-full items-start gap-8 sm:grid-cols-3 lg:min-w-[720px] lg:-translate-x-10 lg:gap-5 xl:min-w-[780px]">
+      <div className="relative mx-auto grid w-full items-start gap-8 sm:grid-cols-3 lg:gap-5">
         {images.map((image, index) => (
           <div
             key={image.src}
             className={[
               `relative mx-auto w-full ${image.aspectClassName}`,
-              index === 1 ? "max-w-[250px] sm:translate-y-6 lg:max-w-[292px]" : "max-w-[230px] lg:max-w-[254px]",
-              index === 2 ? "sm:translate-y-12" : "",
+              index === 1 ? "max-w-[220px] sm:translate-y-6 lg:max-w-[240px]" : "max-w-[190px] lg:max-w-[210px]",
+              index === 2 ? "sm:translate-y-8" : "",
             ].join(" ")}
           >
             <SafeImage
               src={image.src}
               alt={image.alt}
               fill
-              sizes="(min-width: 1024px) 292px, 76vw"
+              sizes="(min-width: 1024px) 240px, 72vw"
               className="object-contain object-center"
             />
           </div>
@@ -335,6 +335,7 @@ export default function ParkingPixPage() {
               src={parkingPixImages.ticket}
               alt="Ticket com QR Code para pagamento via ParkingPix"
               imageClassName="object-contain object-center"
+              maxWidthClassName="max-w-[250px]"
             />
           </div>
         </section>
@@ -422,6 +423,7 @@ export default function ParkingPixPage() {
               alt="Camera escaneando QR Code do ticket no ParkingPix"
               aspectClassName="aspect-[780/1688]"
               imageClassName="object-contain object-center"
+              maxWidthClassName="max-w-[270px]"
             />
           </div>
         </section>
@@ -529,6 +531,7 @@ export default function ParkingPixPage() {
               src={parkingPixImages.paymentQr}
               alt="Pagamento PIX com QR Code e codigo para copiar"
               aspectClassName="aspect-[910/2278]"
+              maxWidthClassName="max-w-[300px]"
             />
           </div>
         </section>
@@ -539,6 +542,7 @@ export default function ParkingPixPage() {
               src={parkingPixImages.paymentConfirmed}
               alt="Tela de pagamento confirmado no ParkingPix"
               aspectClassName="aspect-[910/1990]"
+              maxWidthClassName="max-w-[280px]"
             />
 
             <motion.div
@@ -602,6 +606,7 @@ export default function ParkingPixPage() {
               src={parkingPixImages.paymentWaiting}
               alt="Tela de pagamento PIX aguardando confirmacao"
               aspectClassName="aspect-[910/1790]"
+              maxWidthClassName="max-w-[280px]"
             />
           </div>
         </section>
@@ -612,6 +617,7 @@ export default function ParkingPixPage() {
               src={parkingPixImages.paymentConfirmed}
               alt="Confirmacao de pagamento aprovado no ParkingPix"
               aspectClassName="aspect-[910/1990]"
+              maxWidthClassName="max-w-[280px]"
             />
 
             <motion.div
@@ -716,6 +722,7 @@ export default function ParkingPixPage() {
             <MobileShowcase
               src={parkingPixImages.summary}
               alt="Resumo do tempo e valor como base das decisoes de design"
+              maxWidthClassName="max-w-[280px]"
             />
           </div>
         </section>
