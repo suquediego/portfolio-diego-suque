@@ -26,7 +26,7 @@ export const pt = {
     designerTitle: "designer",
     coderTitle: "<coder>",
     designerText:
-      "Crio interfaces para produtos digitais complexos, unindo UX, UI e design systems.",
+      "Product Designer Pleno com experiência em produtos B2B, fintechs, KYC, dashboards operacionais, sistemas internos e fluxos críticos.",
     coderText:
       "Construo interfaces responsivas com foco em clareza, estrutura e implementação.",
     portfolioCta: "Ver portfólio",
@@ -42,14 +42,14 @@ export const pt = {
         title: "Vanir",
         category: "GATEWAY DE PAGAMENTO",
         description:
-          "Transformei dados técnicos de pagamentos PIX em dashboards operacionais mais claros para suporte, comercial e operação, reduzindo dúvidas recorrentes e aumentando a autonomia dos times.",
+          "Transformei uma operação Pix de alto volume em uma experiência mais rastreável, com dashboards, filtros e status claros para suporte, operação, produto e tecnologia.",
         ctaLabel: "Ver case completo",
       },
       heimdall: {
         title: "Heimdall",
         category: "KYC / Compliance",
         description:
-          "Plataforma de KYC para análise de identidade, validação cadastral, compliance e tomada de decisão em ambientes financeiros.",
+          "Produto de KYC para consulta, validação de CPF/CNPJ, análise cadastral, sinais de risco e apoio à decisão operacional em identidade digital.",
       },
       parkingpix: {
         title: "ParkingPix",
@@ -170,111 +170,105 @@ export const pt = {
         title:
           "Vanir: rastreabilidade para operações financeiras de alto volume.",
         description:
-          "Design de uma experiência para rastrear transações, interpretar falhas e apoiar decisões em tempo real.",
-        pills: [
-          "Product Design",
-          "Gateway de pagamento",
-          "Alta volumetria",
-          "Payin & Payout",
-          "Rastreabilidade",
-          "White label",
-        ],
+          "Produto financeiro B2B para Pix e alto volume transacional. Atuei em discovery, mapeamento da jornada operacional, prototipação e validação para transformar status, logs e motivos de erro em uma experiência mais clara, rastreável e confiável.",
       },
       overview: [
-        "O Vanir é um gateway de pagamento criado para centralizar e rastrear transações, saldos e movimentações financeiras em tempo real.",
-        "O desafio geral era transformar dados dispersos de pay-in, payout, settlement e falhas operacionais em uma experiência clara para monitoramento, investigação e tomada de decisão.",
+        "O Vanir é um gateway de pagamento B2B para processar Pix, acompanhar transações e dar visibilidade a operações financeiras de alto volume.",
+        "O produto é usado por suporte, operação, produto, tecnologia e clientes que precisam entender o que aconteceu em cada transação sem depender sempre de leitura técnica.",
+        "Antes da solução, investiguei o fluxo operacional, conversei com áreas internas e mapeei dúvidas recorrentes para identificar onde a análise travava.",
       ],
       productContext: [
-        "O produto vivia entre clientes integrados via API, operações white label e times internos responsáveis por suporte, financeiro, produto e tecnologia.",
-        "Ele precisava atender perfis técnicos e não técnicos dentro de uma mesma base de experiência, sem perder consistência entre diferentes marcas, permissões e formas de operação.",
-        "Essa posição tornava o dashboard um ponto de encontro entre integração, acompanhamento financeiro e resolução de dúvidas operacionais.",
+        "O produto conectava clientes integrados via API, operações white label, merchants e times internos responsáveis por suporte, financeiro, produto e tecnologia.",
+        "Ele precisava atender perfis técnicos e não técnicos na mesma experiência, mantendo consistência entre permissões, marcas e formas de operação.",
+        "Na prática, o dashboard se tornou uma camada de decisão operacional: ajudava a acompanhar Pix, localizar falhas e reduzir dependência de times técnicos em dúvidas recorrentes.",
       ],
       role: {
         paragraphs: [
-          "Atuei na organização da experiência do produto, conectando fluxos operacionais, hierarquia de informação e necessidades reais de investigação.",
-          "Desenhei dashboards, filtros, tabelas e detalhes transacionais para tornar a leitura da operação mais clara e acionável.",
-          "A atuação exigiu colaboração próxima com produto, tecnologia e operação para preservar consistência, escalabilidade e rastreabilidade na experiência.",
+          "Conduzi discovery com stakeholders de suporte, operação, produto e tecnologia para entender como as áreas investigavam transações e onde surgiam dúvidas, erros ou retrabalho.",
+          "A partir das conversas e da análise de tarefas, mapeei a jornada operacional, levantei dores e organizei a arquitetura da informação para aproximar indicadores, filtros, status e detalhe de transação.",
+          "Desenhei user flows, wireframes, protótipos navegáveis e interfaces para dashboards, tabelas e estados de erro. Depois, apoiei handoff para engenharia, validação com usuários internos e iteração a partir dos feedbacks.",
         ],
-        note: "Mais do que desenhar telas, meu trabalho foi estruturar uma camada visual e funcional para decisões operacionais recorrentes.",
+        note: "Mais do que desenhar telas, meu trabalho foi transformar uma operação financeira complexa em uma experiência rastreável, acionável e escalável.",
       },
       macroDetail: {
         title: "Da visão macro ao detalhe operacional",
         paragraphs: [
-          "A interface foi desenhada para permitir que o usuário acompanhe a operação em diferentes níveis: dos indicadores consolidados até a investigação de transações específicas.",
+          "A lógica de design partia dos indicadores macro para a investigação detalhada. O usuário podia sair de volume, saldo e status geral para filtros, logs, motivos de erro e detalhe de uma transação específica.",
         ],
       },
       operationalContext: {
         paragraphs: [
-          "A operação exigia lidar com alto volume, saldos, status, falhas, múltiplos merchants e informações financeiras que precisavam ser interpretadas rapidamente.",
-          "Quanto maior o fluxo, maior era o risco de uma dúvida simples virar retrabalho: entender uma transação, localizar uma ocorrência ou descobrir o contexto de uma falha.",
+          "A operação lidava com alto volume de Pix, saldos, falhas, múltiplos merchants e informações que precisavam ser lidas com rapidez.",
+          "Quando a interface não explicava contexto, uma dúvida simples virava retrabalho: localizar uma transação, entender o status ou descobrir por que uma falha aconteceu.",
         ],
         note: "A experiência precisava organizar essas camadas sem esconder a complexidade real da operação.",
         cards: [
           {
-            title: "Fluxo transacional",
+            title: "Volume transacional",
             description:
-              "Acompanhar entradas, saídas, status e eventos financeiros com precisão.",
+              "Entradas, saídas, status e eventos financeiros precisavam ser lidos em escala.",
           },
           {
-            title: "Times conectados",
+            title: "Times na mesma base",
             description:
-              "Suporte, financeiro, produto e clientes operando sobre a mesma base.",
+              "Suporte, financeiro, produto e clientes precisavam consultar a mesma informação.",
           },
           {
-            title: "Investigação recorrente",
+            title: "Investigação lenta",
             description:
-              "Falhas e atrasos exigiam ir do resumo ao detalhe com rapidez.",
+              "Falhas exigiam sair do resumo para o detalhe sem perder contexto.",
           },
           {
-            title: "Escala white label",
+            title: "Escala operacional",
             description:
-              "Consistência operacional mesmo em diferentes marcas e contextos.",
+              "A experiência precisava funcionar em diferentes marcas, permissões e contextos.",
           },
         ],
       },
       painPoints: {
         title: "Principais dores",
         paragraphs: [
-          "A complexidade não estava apenas no volume de transações, mas na dificuldade de transformar eventos técnicos e financeiros em respostas claras para a operação.",
-          "O produto precisava diminuir o caminho entre identificar uma dúvida, encontrar o dado correto e entender o que poderia ser feito em seguida.",
+          "As dores vieram de conversas com áreas internas, análise do fluxo operacional e recorrência de dúvidas abertas por suporte e operação.",
+          "O problema não era apenas volume. Era a dificuldade de encontrar uma transação, interpretar status genéricos, entender motivos de erro e responder clientes sem acionar tecnologia.",
+          "Essa dependência criava retrabalho, aumentava o tempo de investigação e deixava sinais de falha ou anomalia menos visíveis para quem precisava agir rápido.",
         ],
         note: "Essas dores orientaram a estrutura do dashboard: rastreabilidade, filtros, leitura de status e acesso rápido ao detalhe de cada transação.",
         cards: [
           {
             title: "Dependência técnica",
             description:
-              "Consultas dependiam de logs, suporte ou leitura técnica.",
+              "Problemas simples ainda dependiam de logs, leitura técnica ou apoio de desenvolvedores.",
           },
           {
             title: "Dados fragmentados",
             description:
-              "Informações espalhadas dificultavam análises rápidas.",
+              "Transações, identificadores, status e motivos de erro ficavam difíceis de localizar rapidamente.",
           },
           {
             title: "Status pouco acionável",
             description:
-              "Falhar não bastava. Era preciso entender motivo, etapa e ação.",
+              "Status genéricos não explicavam etapa, motivo provável do erro ou próxima ação.",
           },
           {
             title: "Baixa autonomia",
             description:
-              "Clientes e times internos dependiam de suporte para investigar.",
+              "Suporte tinha pouca autonomia para responder clientes sem acionar tecnologia.",
           },
         ],
       },
       challenge: {
         paragraphs: [
-          "Minha missão foi traduzir esse cenário em uma interface que ajudasse o usuário a entender onde olhar, o que comparar e como avançar em uma investigação.",
-          "O design precisava aproximar informação técnica e leitura operacional, criando caminhos claros para status, filtros, detalhes transacionais e decisões do dia a dia.",
+          "O desafio central foi transformar um fluxo financeiro complexo em uma experiência operacional clara, rastreável e confiável.",
+          "A interface precisava lidar com alto volume, risco operacional, múltiplos status e necessidade de resposta rápida. Ao mesmo tempo, suporte e operação precisavam investigar sem depender de tecnologia para cada dúvida simples.",
         ],
-        note: "O papel do design foi dar forma a uma experiência rastreável, clara e acionável para usuários internos, clientes e merchants.",
+        note: "O papel do design foi aproximar dados técnicos de decisões operacionais, criando caminhos claros para investigar, interpretar e agir.",
       },
       solution: {
         title: "A solução",
         paragraphs: [
-          "A solução foi criar um dashboard operacional com leitura rápida, atualização constante e foco em rastreabilidade.",
-          "A interface passou a permitir que usuários acompanhassem indicadores essenciais, investigassem transações específicas e entendessem o comportamento da operação em diferentes períodos.",
-          "A experiência conectava dados de balance, payin, payout, settlement, volume transacional e transações em tempo real em uma visão mais clara e acionável.",
+          "A solução conectou as principais dores a uma camada de operação: dashboard para visão macro, filtros para reduzir o universo de análise e tabela para acompanhar transações em tempo real.",
+          "No detalhe da transação, status, etapa, identificadores e motivos de erro ficaram organizados para apoiar diagnóstico e resposta ao cliente.",
+          "Com feedback de suporte, operação e tecnologia, refinamos a experiência para reduzir passos de investigação, aumentar autonomia operacional e diminuir dúvidas recorrentes.",
         ],
         note: "A ideia era simples: sair de uma visão macro da operação para o detalhe de uma transação em poucos cliques.",
       },
@@ -358,21 +352,21 @@ export const pt = {
       impactCards: [
         {
           label: "Eficiência operacional",
-          metric: "65% a 75% menos chamados operacionais",
+          metric: "Cerca de 70% menos dúvidas operacionais",
           description:
-            "Redução estimada com base em registros no ClickUp e relatórios mensais de chamados e resoluções.",
+            "Redução estimada nas dúvidas recorrentes após melhorias em rastreabilidade, status, filtros e motivos de erro.",
         },
         {
           label: "Redução de volume",
-          metric: "De mais de 100 para 20–25 chamados",
+          metric: "Menos dúvidas recorrentes",
           description:
-            "Queda no volume de dúvidas recorrentes por período após a centralização das informações em dashboards, filtros e gráficos.",
+            "Centralização de informações críticas em dashboards, filtros e gráficos reduziu perguntas repetidas sobre transações.",
         },
         {
           label: "Escala de suporte",
-          metric: "Suporte de 6 para 3 pessoas",
+          metric: "Mais autonomia para suporte e operação",
           description:
-            "A maior autonomia das áreas internas e dos clientes reduziu a necessidade de atendimento para dúvidas operacionais simples.",
+            "Times internos passaram a investigar dúvidas simples com mais contexto antes de acionar tecnologia.",
         },
         {
           label: "Autonomia técnica",
@@ -442,11 +436,11 @@ export const pt = {
         title:
           "Heimdall: inteligência de KYC para validação e risco operacional",
         description:
-          "Plataforma de análise cadastral criada para apoiar times de compliance, fraude e risco na validação de pessoas e empresas com mais velocidade, rastreabilidade e segurança.",
+          "Produto de KYC e validação operacional para consulta, análise e interpretação de dados cadastrais, apoiando decisões com mais clareza, segurança e rastreabilidade.",
       },
       overview: [
-        "O Heimdall é uma solução de KYC e análise cadastral voltada para operações que precisam validar identidades, investigar vínculos e tomar decisões com base em dados confiáveis.",
-        "A plataforma centraliza informações de diferentes fontes em uma interface única, reduzindo a necessidade de alternar entre sistemas, planilhas e consultas manuais durante uma análise. Com isso, analistas conseguem identificar inconsistências e construir uma visão mais completa sobre pessoas e empresas.",
+        "O Heimdall é uma solução de KYC, identidade digital e análise cadastral voltada para operações que precisam validar CPF/CNPJ, investigar vínculos, renda presumida, PEP, histórico e sinais de risco.",
+        "A plataforma centraliza informações de diferentes fontes em uma interface única, reduzindo a alternância entre sistemas, planilhas e consultas manuais. Com isso, analistas conseguem ler dados complexos, identificar alertas e construir uma visão mais completa para decisão operacional.",
       ],
       productContext: [
         "Em operações financeiras e reguladas, validar um CPF ou CNPJ não é apenas confirmar dados básicos. É preciso entender histórico, vínculos, exposição política, relações empresariais, sinais de fraude e possíveis inconsistências.",

@@ -32,25 +32,33 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE);
 
   useEffect(() => {
-    const storedLanguage = window.localStorage.getItem(STORAGE_KEY);
-    let frame = 0;
+    const timeout = window.setTimeout(() => {
+      let storedLanguage: string | null = null;
 
-    if (isLanguage(storedLanguage)) {
-      frame = window.requestAnimationFrame(() => {
+      try {
+        storedLanguage = window.localStorage.getItem(STORAGE_KEY);
+      } catch {
+        storedLanguage = null;
+      }
+
+      if (isLanguage(storedLanguage)) {
         setLanguageState(storedLanguage);
-      });
-    }
+      }
+    }, 0);
 
     return () => {
-      if (frame) {
-        window.cancelAnimationFrame(frame);
-      }
+      window.clearTimeout(timeout);
     };
   }, []);
 
   const setLanguage = (nextLanguage: Language) => {
     setLanguageState(nextLanguage);
-    window.localStorage.setItem(STORAGE_KEY, nextLanguage);
+
+    try {
+      window.localStorage.setItem(STORAGE_KEY, nextLanguage);
+    } catch {
+      // Keep the language change even if storage is unavailable.
+    }
   };
 
   const value = useMemo(

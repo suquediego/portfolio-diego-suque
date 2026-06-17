@@ -28,7 +28,7 @@ export const en: Translation = {
     designerTitle: "designer",
     coderTitle: "<coder>",
     designerText:
-      "I create interfaces for complex digital products, connecting UX, UI, and design systems.",
+      "Mid-level Product Designer experienced in B2B products, fintechs, KYC, operational dashboards, internal systems, and critical flows.",
     coderText:
       "I build responsive interfaces focused on clarity, structure, and implementation.",
     portfolioCta: "View portfolio",
@@ -44,14 +44,14 @@ export const en: Translation = {
         title: "Vanir",
         category: "PAYMENT GATEWAY",
         description:
-          "I turned technical PIX payment data into clearer operational dashboards for support, sales, and operations, reducing recurring questions and increasing team autonomy.",
+          "I turned a high-volume Pix operation into a more traceable experience, with dashboards, filters, and clear statuses for support, operations, product, and technology.",
         ctaLabel: "View full case",
       },
       heimdall: {
         title: "Heimdall",
         category: "KYC / Compliance",
         description:
-          "A KYC platform for identity analysis, registration validation, compliance, and decision-making in financial environments.",
+          "A KYC product for CPF/CNPJ validation, registration analysis, risk signals, and operational decision support in digital identity.",
       },
       parkingpix: {
         title: "ParkingPix",
@@ -171,111 +171,105 @@ export const en: Translation = {
       hero: {
         title: "Vanir: traceability for high-volume financial operations.",
         description:
-          "Designing an experience to track transactions, interpret failures, and support real-time decisions.",
-        pills: [
-          "Product Design",
-          "Payment gateway",
-          "High volume",
-          "Payin & Payout",
-          "Traceability",
-          "White label",
-        ],
+          "A B2B financial product for Pix and high transaction volume. I worked on discovery, operational journey mapping, prototyping, and validation to turn statuses, logs, and error reasons into a clearer, traceable, and reliable experience.",
       },
       overview: [
-        "Vanir is a payment gateway created to centralize and track transactions, balances, and financial movements in real time.",
-        "The broader challenge was to turn scattered pay-in, payout, settlement, and operational failure data into a clear experience for monitoring, investigation, and decision-making.",
+        "Vanir is a B2B payment gateway for processing Pix, tracking transactions, and giving visibility to high-volume financial operations.",
+        "The product is used by support, operations, product, technology, and clients who need to understand what happened in each transaction without always depending on technical reading.",
+        "Before the solution, I investigated the operational flow, spoke with internal teams, and mapped recurring questions to identify where analysis was getting stuck.",
       ],
       productContext: [
-        "The product lived between API-integrated clients, white-label operations, and internal teams responsible for support, finance, product, and technology.",
-        "It needed to serve technical and non-technical profiles within the same experience base, without losing consistency across brands, permissions, and operating models.",
-        "That position made the dashboard a meeting point between integration, financial monitoring, and operational question resolution.",
+        "The product connected API-integrated clients, white-label operations, merchants, and internal teams responsible for support, finance, product, and technology.",
+        "It needed to serve technical and non-technical profiles in the same experience, while keeping consistency across permissions, brands, and operating models.",
+        "In practice, the dashboard became an operational decision layer: it helped monitor Pix, locate failures, and reduce dependency on technical teams for recurring questions.",
       ],
       role: {
         paragraphs: [
-          "I worked on organizing the product experience, connecting operational flows, information hierarchy, and real investigation needs.",
-          "I designed dashboards, filters, tables, and transaction details to make operational reading clearer and more actionable.",
-          "The work required close collaboration with product, technology, and operations to preserve consistency, scalability, and traceability in the experience.",
+          "I led discovery with support, operations, product, and technology stakeholders to understand how teams investigated transactions and where questions, errors, or rework appeared.",
+          "Based on conversations and task analysis, I mapped the operational journey, identified pain points, and organized the information architecture to bring indicators, filters, statuses, and transaction details closer together.",
+          "I designed user flows, wireframes, navigable prototypes, and interfaces for dashboards, tables, and error states. Then I supported engineering handoff, internal user validation, and iteration based on feedback.",
         ],
-        note: "More than designing screens, my work was to structure a visual and functional layer for recurring operational decisions.",
+        note: "More than designing screens, my work was to turn a complex financial operation into a traceable, actionable, and scalable experience.",
       },
       macroDetail: {
         title: "From macro view to operational detail",
         paragraphs: [
-          "The interface was designed so users could monitor the operation at different levels: from consolidated indicators to the investigation of specific transactions.",
+          "The design logic moved from macro indicators to detailed investigation. Users could go from volume, balance, and overall status to filters, logs, error reasons, and the detail of a specific transaction.",
         ],
       },
       operationalContext: {
         paragraphs: [
-          "The operation required dealing with high volume, balances, statuses, failures, multiple merchants, and financial information that needed to be interpreted quickly.",
-          "The higher the flow, the greater the risk of a simple question becoming rework: understanding a transaction, locating an occurrence, or discovering the context of a failure.",
+          "The operation handled high Pix volume, balances, failures, multiple merchants, and information that needed to be read quickly.",
+          "When the interface did not explain context, a simple question became rework: locating a transaction, understanding its status, or discovering why a failure happened.",
         ],
         note: "The experience needed to organize these layers without hiding the real complexity of the operation.",
         cards: [
           {
-            title: "Transactional flow",
+            title: "Transaction volume",
             description:
-              "Track inflows, outflows, statuses, and financial events with precision.",
+              "Inflows, outflows, statuses, and financial events needed to be read at scale.",
           },
           {
-            title: "Connected teams",
+            title: "Teams on one base",
             description:
-              "Support, finance, product, and clients operating from the same base.",
+              "Support, finance, product, and clients needed to consult the same information.",
           },
           {
-            title: "Recurring investigation",
+            title: "Slow investigation",
             description:
-              "Failures and delays required moving from summary to detail quickly.",
+              "Failures required moving from summary to detail without losing context.",
           },
           {
-            title: "White-label scale",
+            title: "Operational scale",
             description:
-              "Operational consistency across different brands and contexts.",
+              "The experience needed to work across different brands, permissions, and contexts.",
           },
         ],
       },
       painPoints: {
         title: "Main pain points",
         paragraphs: [
-          "The complexity was not only in the transaction volume, but in the difficulty of turning technical and financial events into clear operational answers.",
-          "The product needed to shorten the path between identifying a question, finding the right data, and understanding what could be done next.",
+          "The pain points came from conversations with internal teams, analysis of the operational flow, and recurring questions raised by support and operations.",
+          "The issue was not only volume. It was the difficulty of finding a transaction, interpreting generic statuses, understanding error reasons, and answering clients without involving technology.",
+          "That dependency created rework, increased investigation time, and made failure or anomaly signals less visible to the people who needed to act quickly.",
         ],
         note: "These pains guided the dashboard structure: traceability, filters, status reading, and quick access to each transaction detail.",
         cards: [
           {
             title: "Technical dependency",
             description:
-              "Searches depended on logs, support, or technical reading.",
+              "Simple issues still depended on logs, technical reading, or developer support.",
           },
           {
             title: "Fragmented data",
             description:
-              "Scattered information made fast analysis harder.",
+              "Transactions, identifiers, statuses, and error reasons were hard to locate quickly.",
           },
           {
             title: "Low-actionability status",
             description:
-              "A failure was not enough. Users needed to understand reason, stage, and action.",
+              "Generic statuses did not explain stage, likely error reason, or next action.",
           },
           {
             title: "Low autonomy",
             description:
-              "Clients and internal teams depended on support to investigate.",
+              "Support had limited autonomy to answer clients without involving technology.",
           },
         ],
       },
       challenge: {
         paragraphs: [
-          "My mission was to translate this scenario into an interface that helped users understand where to look, what to compare, and how to move forward in an investigation.",
-          "The design needed to bring technical information and operational reading closer together, creating clear paths for status, filters, transaction details, and everyday decisions.",
+          "The central challenge was turning a complex financial flow into a clear, traceable, and reliable operational experience.",
+          "The interface needed to handle high volume, operational risk, multiple statuses, and the need for fast responses. At the same time, support and operations needed to investigate without depending on technology for every simple question.",
         ],
-        note: "Design's role was to shape a traceable, clear, and actionable experience for internal users, clients, and merchants.",
+        note: "Design's role was to bring technical data closer to operational decisions, creating clear paths to investigate, interpret, and act.",
       },
       solution: {
         title: "The solution",
         paragraphs: [
-          "The solution was to create an operational dashboard with fast reading, constant updates, and a focus on traceability.",
-          "The interface allowed users to follow essential indicators, investigate specific transactions, and understand operational behavior across different periods.",
-          "The experience connected balance, payin, payout, settlement, transaction volume, and real-time transaction data into a clearer and more actionable view.",
+          "The solution connected the main pains to an operational layer: dashboard for macro view, filters to narrow the analysis, and table to monitor transactions in real time.",
+          "In the transaction detail, status, stage, identifiers, and error reasons were organized to support diagnosis and client response.",
+          "With feedback from support, operations, and technology, we refined the experience to reduce investigation steps, increase operational autonomy, and lower recurring questions.",
         ],
         note: "The idea was simple: move from a macro view of the operation to a transaction detail in a few clicks.",
       },
@@ -359,21 +353,21 @@ export const en: Translation = {
       impactCards: [
         {
           label: "Operational efficiency",
-          metric: "65% to 75% fewer operational tickets",
+          metric: "Around 70% fewer operational questions",
           description:
-            "Estimated reduction based on ClickUp records and monthly reports of tickets and resolutions.",
+            "Estimated reduction in recurring questions after improvements in traceability, statuses, filters, and error reasons.",
         },
         {
           label: "Volume reduction",
-          metric: "From over 100 to 20-25 tickets",
+          metric: "Fewer recurring questions",
           description:
-            "Drop in recurring questions per period after information was centralized in dashboards, filters, and charts.",
+            "Centralizing critical information in dashboards, filters, and charts reduced repeated questions about transactions.",
         },
         {
           label: "Support scale",
-          metric: "Support from 6 to 3 people",
+          metric: "More autonomy for support and operations",
           description:
-            "Greater autonomy for internal areas and clients reduced the need for support on simple operational questions.",
+            "Internal teams could investigate simple questions with more context before involving technology.",
         },
         {
           label: "Technical autonomy",
@@ -443,11 +437,11 @@ export const en: Translation = {
         title:
           "Heimdall: KYC intelligence for validation and operational risk",
         description:
-          "A registration analysis platform created to help compliance, fraud, and risk teams validate people and companies with more speed, traceability, and safety.",
+          "A KYC and operational validation product for querying, analyzing, and interpreting registration data, supporting decisions with more clarity, safety, and traceability.",
       },
       overview: [
-        "Heimdall is a KYC and registration analysis solution for operations that need to validate identities, investigate relationships, and make decisions based on reliable data.",
-        "The platform centralizes information from different sources in a single interface, reducing the need to switch between systems, spreadsheets, and manual queries during an analysis. As a result, analysts can identify inconsistencies and build a more complete view of people and companies.",
+        "Heimdall is a KYC, digital identity, and registration analysis solution for operations that need to validate CPF/CNPJ data, investigate relationships, presumed income, PEP, history, and risk signals.",
+        "The platform centralizes information from different sources in a single interface, reducing the need to switch between systems, spreadsheets, and manual queries. As a result, analysts can read complex data, identify alerts, and build a more complete view for operational decisions.",
       ],
       productContext: [
         "In financial and regulated operations, validating an individual or company ID is not just about confirming basic data. It requires understanding history, relationships, political exposure, business connections, fraud signals, and possible inconsistencies.",

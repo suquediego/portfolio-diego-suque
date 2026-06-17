@@ -278,7 +278,6 @@ export default function VanirPage() {
   const t = useTranslation();
   const common = t.cases.common;
   const caseText = t.cases.vanir;
-  const heroPills = caseText.hero.pills;
   const impactCards = caseText.impactCards;
   const impactComparison = caseText.impactComparison;
   const learningCards = caseText.learningCards;
@@ -290,12 +289,12 @@ export default function VanirPage() {
         <section className="relative overflow-hidden px-5 pb-24 pt-16 md:px-8 md:pb-32 md:pt-24">
           <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-[#F2F2F2] blur-3xl" />
 
-          <div className="relative mx-auto grid max-w-[1240px] items-start gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+          <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
             <motion.div
               initial={{ opacity: 0, x: -44, filter: "blur(10px)" }}
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="max-w-[560px] pt-2 lg:pt-20"
+              className="max-w-[560px] pt-2 lg:pt-0"
             >
               <h1 className="text-left text-[38px] font-black leading-[0.98] tracking-[-0.045em] text-[#303030] md:text-[48px] lg:text-[54px]">
                 {caseText.hero.title}
@@ -304,17 +303,6 @@ export default function VanirPage() {
               <p className="mt-7 max-w-[520px] text-left text-base leading-8 text-[#727272] md:text-xl md:leading-9">
                 {caseText.hero.description}
               </p>
-
-              <div className="mt-8 flex max-w-[540px] flex-wrap gap-2.5">
-                {heroPills.map((pill) => (
-                  <span
-                    key={pill}
-                    className="rounded-[14px] border border-[#DADADA] bg-[#F4F4F4] px-4 py-2 text-[13px] font-semibold leading-none tracking-[-0.01em] text-[#4A4A4A] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition-colors duration-200 hover:border-[#C9C9C9] hover:bg-white"
-                  >
-                    {pill}
-                  </span>
-                ))}
-              </div>
             </motion.div>
 
             <BrowserMockup />
