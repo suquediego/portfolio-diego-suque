@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { WorkCard } from "@/components/work-card";
 import { works } from "@/data/works";
@@ -41,6 +39,7 @@ export default function PortfolioPage() {
           <h2 className="shrink-0 text-[32px] font-black leading-none tracking-[-0.045em] text-[#303030]">
             {t.pages.portfolio.otherProjectsTitle}
           </h2>
+
           <div className="h-px w-full bg-[#D0D0D0]" />
         </div>
 
@@ -53,16 +52,14 @@ export default function PortfolioPage() {
               <h3 className="text-[22px] font-black leading-none tracking-[-0.04em] text-[#303030]">
                 {project}
               </h3>
+
               <p className="mt-4 text-[14px] leading-[1.6] text-[#727272]">
                 {t.pages.portfolio.reservedText}
               </p>
-              <Link
-                href="/portfolio"
-                className="mt-6 inline-flex items-center gap-2 text-[13px] font-semibold text-[#606060]"
-              >
-                {t.pages.portfolio.inProgress}
-                <ArrowRight className="size-4" />
-              </Link>
+
+              <p className="mt-6 text-[13px] font-semibold text-[#606060]">
+                Em breve
+              </p>
             </article>
           ))}
         </div>

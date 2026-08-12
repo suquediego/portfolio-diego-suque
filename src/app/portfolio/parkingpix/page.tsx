@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 
 import { PageShell } from "@/components/page-shell";
+import { ExpandableMedia } from "@/components/expandable-media";
 import { SafeImage } from "@/components/safe-image";
 import { useTranslation } from "@/hooks/use-translation";
 import { basePath } from "@/lib/base-path";
@@ -51,7 +52,11 @@ function HeroMobileMockup() {
       className="w-full"
     >
       <div className="relative mx-auto flex w-full items-center justify-center lg:justify-end lg:pt-14">
-        <div className="relative aspect-[910/2278] w-full max-w-[240px] drop-shadow-[0_24px_45px_rgba(0,0,0,0.14)] md:max-w-[260px] lg:max-w-[300px]">
+        <ExpandableMedia
+          src={parkingPixImages.paymentQr}
+          alt="Tela de pagamento PIX com QR Code no ParkingPix"
+          className="relative aspect-[910/2278] w-full max-w-[240px] drop-shadow-[0_24px_45px_rgba(0,0,0,0.14)] md:max-w-[260px] lg:max-w-[300px]"
+        >
           <SafeImage
             src={parkingPixImages.paymentQr}
             alt="Tela de pagamento PIX com QR Code no ParkingPix"
@@ -60,7 +65,7 @@ function HeroMobileMockup() {
             sizes="(min-width: 1024px) 300px, 70vw"
             className="scale-[0.92] object-contain object-center"
           />
-        </div>
+        </ExpandableMedia>
       </div>
     </motion.div>
   );
@@ -84,7 +89,11 @@ function MobileShowcase({
     >
       <div className="relative mx-auto flex w-full items-center justify-center">
         {src ? (
-          <div className={`relative w-full ${maxWidthClassName} ${aspectClassName}`}>
+          <ExpandableMedia
+            src={src}
+            alt={alt}
+            className={`relative w-full ${maxWidthClassName} ${aspectClassName}`}
+          >
             <SafeImage
               src={src}
               alt={alt}
@@ -92,7 +101,7 @@ function MobileShowcase({
               sizes="(min-width: 1024px) 300px, 78vw"
               className={imageClassName}
             />
-          </div>
+          </ExpandableMedia>
         ) : (
           <div className="flex aspect-[910/2094] w-full max-w-[320px] items-center justify-center rounded-[28px] border border-dashed border-[#CFCFCF] bg-white px-8 text-center">
             <span className="text-sm font-semibold leading-6 text-[#8A8A8A]">
@@ -121,7 +130,11 @@ function EditorialImageShowcase({
       transition={{ duration: 0.75, ease: "easeInOut" }}
       className={["w-full", className].join(" ")}
     >
-      <div className={`relative mx-auto w-full overflow-hidden rounded-[30px] border border-[#DADADA] bg-white shadow-[0_18px_50px_rgba(48,48,48,0.1)] ${maxWidthClassName} ${aspectClassName}`}>
+      <ExpandableMedia
+        src={src}
+        alt={alt}
+        className={`relative mx-auto w-full overflow-hidden rounded-[30px] border border-[#DADADA] bg-white shadow-[0_18px_50px_rgba(48,48,48,0.1)] ${maxWidthClassName} ${aspectClassName}`}
+      >
         <SafeImage
           src={src}
           alt={alt}
@@ -129,7 +142,7 @@ function EditorialImageShowcase({
           sizes="(min-width: 1024px) 280px, 76vw"
           className={imageClassName}
         />
-      </div>
+      </ExpandableMedia>
     </motion.div>
   );
 }
@@ -153,13 +166,19 @@ function FlowShowcase({ images }: FlowShowcaseProps) {
               index === 2 ? "sm:translate-y-8" : "",
             ].join(" ")}
           >
-            <SafeImage
+            <ExpandableMedia
               src={image.src}
               alt={image.alt}
-              fill
-              sizes="(min-width: 1024px) 240px, 72vw"
-              className="object-contain object-center"
-            />
+              className="h-full w-full"
+            >
+              <SafeImage
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(min-width: 1024px) 240px, 72vw"
+                className="object-contain object-center"
+              />
+            </ExpandableMedia>
           </div>
         ))}
       </div>
