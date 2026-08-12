@@ -78,28 +78,61 @@ export const es: Translation = {
       inProgress: "En estructuración",
     },
     about: {
-      eyebrow: "Diego Suque",
+      eyebrow: "DIEGO SUQUE",
       title: "Sobre mí",
       description:
-        "Soy Diego Suque, Product Designer con experiencia en UX/UI, design systems, investigación, prototipado, productos financieros e implementación front-end. Trabajo creando interfaces para productos digitales complejos, conectando reglas de negocio, experiencia de usuario y ejecución visual.",
-      blocks: [
-        {
-          title: "Actuación",
-          text: "Estructuración de jornadas, flujos, interfaces y sistemas visuales para productos digitales complejos.",
-        },
-        {
-          title: "Experiencia",
-          text: "Base para detallar trayectorias, tipos de producto, responsabilidades y aprendizajes relevantes.",
-        },
-        {
-          title: "Herramientas",
-          text: "Espacio para organizar herramientas de diseño, documentación, prototipado, investigación e implementación.",
-        },
-        {
-          title: "Design + Front-end",
-          text: "Conexión entre decisiones de producto, calidad visual, componentización y viabilidad técnica.",
-        },
+        "Soy Diego Suque, carioca, curioso y observador. Antes de las pantallas, existe alguien a quien le gusta entender cómo funcionan las cosas, cocinar, entrenar jiu-jitsu, consumir buenas historias y transformar ideas confusas en algo más claro.",
+      chips: [
+        "Río de Janeiro",
+        "Cocina",
+        "Jiu-jitsu",
+        "Anime & manga",
+        "Rutina y disciplina",
+        "Setup creativo",
+        "Silencio para pensar",
+        "Cosas bien hechas",
       ],
+      observationMotion: {
+        support:
+          "Soy más de observar antes de hablar, entender el contexto y prestar atención a los detalles. Al mismo tiempo, necesito movimiento: entrenamiento, rutina y repetición me ayudan a evolucionar con presencia y constancia.",
+        items: [
+          {
+            title: "Observación",
+            text: "Silencio, contexto, detalle, escucha y claridad.",
+          },
+          {
+            title: "Movimiento",
+            text: "Entrenamiento, rutina, repetición, presencia y evolución.",
+          },
+        ],
+      },
+      origin: {
+        title: "De dónde viene mi mirada",
+        text: "Vengo de Ingeniería Civil, donde aprendí estructura, lógica y responsabilidad con lo que se construye. Después encontré en el diseño una forma más humana de resolver problemas: menos concreto, más comportamiento; menos plano, más experiencia.",
+      },
+      offScreen: {
+        items: [
+          "Cocinar me ayuda a desacelerar.",
+          "El jiu-jitsu me enseña presencia y humildad.",
+          "El anime y el manga alimentan mi imaginario visual.",
+          "Soy más observador que expansivo.",
+          "Me gustan las cosas bien hechas, incluso en los detalles.",
+          "La claridad, para mí, también es cuidado.",
+        ],
+      },
+      creativeWay: {
+        title: "Mi forma de crear",
+        text: "Mi proceso nace de la observación. Me gusta organizar ideas, simplificar el exceso y transformar contexto en algo que pueda ser entendido, sentido y usado por personas reales.",
+        words: ["observar", "organizar", "simplificar", "refinar", "cuidar"],
+      },
+      closing: {
+        paragraphs: [
+          "Al final, lo que aparece en las pantallas es solo una parte del camino. Detrás existe alguien intentando observar mejor, aprender con intención y construir cosas que tengan sentido.",
+          "Un gusto. Este es un poco del Diego detrás de las interfaces.",
+        ],
+        primaryCta: "Hablar conmigo",
+        secondaryCta: "LinkedIn",
+      },
     },
     contact: {
       eyebrow: "Conversación",

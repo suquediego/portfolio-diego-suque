@@ -4,16 +4,17 @@ import { Navbar } from "@/components/navbar";
 
 type PageShellProps = {
   children: ReactNode;
-  variant?: "default" | "case";
+  variant?: "default" | "case" | "white";
 };
 
 export function PageShell({ children, variant = "default" }: PageShellProps) {
   const isCase = variant === "case";
+  const isWhite = variant === "white";
 
   return (
     <main
       className={
-        isCase
+        isCase || isWhite
           ? "min-h-screen bg-white text-[#303030]"
           : "min-h-screen bg-[#E8E8E8] text-[#303030]"
       }

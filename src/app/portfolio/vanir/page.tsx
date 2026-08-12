@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { PageShell } from "@/components/page-shell";
 import { SafeImage } from "@/components/safe-image";
+import { ExpandableMedia } from "@/components/expandable-media";
 import { useTranslation } from "@/hooks/use-translation";
 import { basePath } from "@/lib/base-path";
 
@@ -79,7 +80,11 @@ function BrowserMockup() {
             </div>
           </div>
 
-          <div className="relative h-[430px] overflow-hidden bg-white">
+          <ExpandableMedia
+            src={`${basePath}/images/cases/vanir/dashboard-hero.png`}
+            alt="Dashboard operacional do Vanir"
+            className="relative h-[430px] overflow-hidden bg-white"
+          >
             <SafeImage
               src={`${basePath}/images/cases/vanir/dashboard-hero.png`}
               alt="Dashboard operacional do Vanir"
@@ -88,7 +93,7 @@ function BrowserMockup() {
               sizes="680px"
               className="object-cover object-top"
             />
-          </div>
+          </ExpandableMedia>
         </div>
       </div>
 
@@ -100,7 +105,11 @@ function BrowserMockup() {
           <div className="ml-3 h-5 flex-1 rounded-full border border-[#DDDDDD] bg-white" />
         </div>
 
-        <div className="relative h-[280px] overflow-hidden bg-white sm:h-[360px]">
+        <ExpandableMedia
+          src={`${basePath}/images/cases/vanir/dashboard-hero.png`}
+          alt="Dashboard operacional do Vanir"
+          className="relative h-[280px] overflow-hidden bg-white sm:h-[360px]"
+        >
           <SafeImage
             src={`${basePath}/images/cases/vanir/dashboard-hero.png`}
             alt="Dashboard operacional do Vanir"
@@ -109,7 +118,7 @@ function BrowserMockup() {
             sizes="(min-width: 640px) 640px, 100vw"
             className="object-cover object-top"
           />
-        </div>
+        </ExpandableMedia>
       </div>
     </motion.div>
   );
@@ -150,32 +159,38 @@ function StaticBrowserMockup({
 
           <div className="relative h-[390px] overflow-hidden bg-white">
             {imageSrc ? (
-              autoScroll ? (
-                <motion.div
-                  role="img"
-                  aria-label={alt}
-                  className={`absolute inset-x-0 top-0 bg-top bg-no-repeat ${imageWrapperClassName}`}
-                  style={{
-                    backgroundImage: `url(${imageSrc})`,
-                    backgroundSize: "100% auto",
-                  }}
-                  animate={{ y: ["0%", scrollDistance, "0%"] }}
-                  transition={{
-                    duration: scrollDuration,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    ease: "easeInOut",
-                  }}
-                />
-              ) : (
-                <SafeImage
-                  src={imageSrc}
-                  alt={alt}
-                  fill
-                  sizes="680px"
-                  className={imageClassName}
-                />
-              )
+              <ExpandableMedia
+                src={imageSrc}
+                alt={alt}
+                className="h-full w-full"
+              >
+                {autoScroll ? (
+                  <motion.div
+                    role="img"
+                    aria-label={alt}
+                    className={`absolute inset-x-0 top-0 bg-top bg-no-repeat ${imageWrapperClassName}`}
+                    style={{
+                      backgroundImage: `url(${imageSrc})`,
+                      backgroundSize: "100% auto",
+                    }}
+                    animate={{ y: ["0%", scrollDistance, "0%"] }}
+                    transition={{
+                      duration: scrollDuration,
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      ease: "easeInOut",
+                    }}
+                  />
+                ) : (
+                  <SafeImage
+                    src={imageSrc}
+                    alt={alt}
+                    fill
+                    sizes="680px"
+                    className={imageClassName}
+                  />
+                )}
+              </ExpandableMedia>
             ) : (
               <div className="flex h-full items-center justify-center px-6">
                 <div className="flex h-[78%] w-full max-w-[520px] items-center justify-center rounded-[22px] border border-dashed border-[#CFCFCF] bg-white text-center">
@@ -232,7 +247,12 @@ function DashboardVideoShowcase() {
             </div>
           </div>
 
-          <div className="relative aspect-[21/9] overflow-hidden bg-white">
+          <ExpandableMedia
+            src={`${basePath}/videos/vanir-dashboard-overview.mp4`}
+            alt="Demonstração do dashboard operacional do Vanir"
+            type="video"
+            className="relative aspect-[21/9] overflow-hidden bg-white"
+          >
             <video
               ref={videoRef}
               src={`${basePath}/videos/vanir-dashboard-overview.mp4`}
@@ -242,7 +262,7 @@ function DashboardVideoShowcase() {
               playsInline
               className="h-full w-full scale-[1.035] object-cover object-top"
             />
-          </div>
+          </ExpandableMedia>
         </div>
       </div>
     </motion.div>
@@ -814,14 +834,14 @@ export default function VanirPage() {
 
               <div className="mt-8 space-y-6 text-left">
                 {caseText.designDecisions.cards.map((card) => (
-                <div key={card.title}>
-                  <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
-                    {card.description}
-                  </p>
-                </div>
+                  <div key={card.title}>
+                    <h3 className="text-lg font-bold leading-6 tracking-[-0.02em] text-[#303030] md:text-xl">
+                      {card.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-[#686868] md:text-base md:leading-8">
+                      {card.description}
+                    </p>
+                  </div>
                 ))}
               </div>
             </motion.div>
